@@ -12,7 +12,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>这是列表</title>
 <!--日期--><script type="text/javascript" src="<%=path%>/My97DatePicker/WdatePicker.js"></script>
-
 <!-- 新的 -->
 <link rel="stylesheet" href="/bootstrap-4.3.1/css/bootstrap.css">
 <script type="text/javascript" src="/bootstrap-4.3.1/js/bootstrap.js"></script>

@@ -29,6 +29,7 @@ public class UserController {
 	
 	@RequestMapping("dl")
 	private String dl() {
+//		判断
 		return "redirect:/list";
 	}
 	

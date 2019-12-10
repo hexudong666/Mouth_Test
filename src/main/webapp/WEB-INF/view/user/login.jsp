@@ -11,15 +11,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/css.css"/> 
-<script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="<%=path%>/My97DatePicker/WdatePicker.js"></script>
+<!--日期插件--><script type="text/javascript" src="<%=path%>/My97DatePicker/WdatePicker.js"></script>
+<!-- 新的css,js -->
+<link rel="stylesheet" href="/bootstrap-4.3.1/css/bootstrap.css">
+<script type="text/javascript" src="/bootstrap-4.3.1/js/bootstrap.js"></script>
 </head>
 <body>
-	<form action="dl" method="post">
-		名字:<input type="text" value="${user.uname}" name="uname"><br><br>
-		密码:<input type="text" value="${user.pwd}" name="pwd"><br><br>
-		<input type="submit" value="登录">
-	</form>
+<div>
+		<ul>
+			<li>
+				账号:
+				<br><br>
+				密码:
+				<br><br>
+			
+			</li>
+		</ul>
+	<input type="button" value="登录">
+</div>
+	
 </body>
 </html>
