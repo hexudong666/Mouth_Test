@@ -12,20 +12,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>这是列表</title>
 <!--日期--><script type="text/javascript" src="<%=path%>/My97DatePicker/WdatePicker.js"></script>
-<!-- 之前的 -->
-<%--  <!--CSS样式--><link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/css.css"/> 
-<!--JS--><script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.min.js"></script>
- --%>
- 
-<!-- 新的方法,报错 -->
-<!-- <link href="src/main/webapp/bootstrap-4.3.1/css/bootstrap.css" rel="stylesheet">
-<script type="text/javascript" src="webapp/bootstrap-4.3.1/js/bootstrap.js"></script>
- -->
 
-<link rel="stylesheet" href="src/main/webapp/bootstrap-4.3.1/js/bootstrap.js">
-<script type="text/javascript" src="src/main/webapp/bootstrap-4.3.1/js/bootstrap.js"></script>
+<!-- 新的 -->
+<link rel="stylesheet" href="/bootstrap-4.3.1/css/bootstrap.css">
+<script type="text/javascript" src="/bootstrap-4.3.1/js/bootstrap.js"></script>
 </head>
 <body>
-	胡鹏骚是憨批
+	<h1>
+		胡鹏骚是憨批
+	</h1>
 </body>
 </html>
