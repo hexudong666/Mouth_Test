@@ -1,9 +1,12 @@
 package com.hexudong.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.reflect.MethodDelegate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hexudong.eitity.LoginUser;
 import com.hexudong.service.UserService;
 
 @Controller
@@ -16,6 +19,17 @@ public class UserController {
 	@RequestMapping("home")
 	private String getList() {
 		return "user/home";
+	}
+	
+	@RequestMapping("login")
+	private String login(Model model) {
+//		model.addAttribute("user", new LoginUser());
+		return "login";
+	}
+	
+	@RequestMapping("dl")
+	private String dl() {
+		return "redirect:/list";
 	}
 	
 }
