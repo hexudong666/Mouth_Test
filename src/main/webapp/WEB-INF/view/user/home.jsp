@@ -11,9 +11,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>这是列表</title>
- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/css.css"/> 
+<%-- 
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/css.css"/> 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.min.js"></script>
+ --%>
 <script type="text/javascript" src="<%=path%>/My97DatePicker/WdatePicker.js"></script>
+<link href="bootstrap-4.3.1/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" src="bootstrap-4.3.1/js/bootstrap.js"></script>
 </head>
 <body>
 	胡鹏骚是憨批
