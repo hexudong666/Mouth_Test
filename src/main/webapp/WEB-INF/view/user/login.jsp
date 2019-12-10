@@ -20,6 +20,6 @@
 		名字:<input type="text" value="${user.uname}" name="uname"><br><br>
 		密码:<input type="text" value="${user.pwd}" name="pwd"><br><br>
 		<input type="submit" value="登录">
-	</form>	
+	</form>
 </body>
 </html>

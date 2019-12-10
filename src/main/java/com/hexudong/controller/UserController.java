@@ -24,7 +24,7 @@ public class UserController {
 	@RequestMapping("login")
 	private String login(Model model) {
 //		model.addAttribute("user", new LoginUser());
-		return "login";
+		return "user/login";
 	}
 	
 	@RequestMapping("dl")
