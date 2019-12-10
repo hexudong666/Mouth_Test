@@ -13,9 +13,9 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	@RequestMapping("list")
+	@RequestMapping("home")
 	private String getList() {
-		return "user/list";
+		return "user/home";
 	}
 	
 }
