@@ -17,21 +17,29 @@
 <script type="text/javascript" src="/bootstrap-4.3.1/js/bootstrap.js"></script>
 </head>
 <body>
-<div>
-		<ul>
-			<li>
-				账号:
-				<br><br>
-				密码:
-				<br><br>
-			
-			</li>
-		</ul>
+	<div class="alert alert-warning">
+	    <a href="#" class="close" data-dismiss="alert">
+	        &times;
+	    </a>
+	    <strong>警告！</strong>请先登录
+	</div>
+	
+		账号:
+		<br><br>
+		密码:
+		<br><br>
 	<input type="button" value="登录">
-</div>
 
-
-
+	<table>
+		<tr>
+			<td>账号</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>密码</td>
+			<td></td>
+		</tr>
+	</table>
 
 
 
