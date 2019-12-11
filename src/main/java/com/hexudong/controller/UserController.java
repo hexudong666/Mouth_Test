@@ -88,11 +88,7 @@ public class UserController {
 		return "redirect:login";
 	}
 	
-	@RequestMapping("dl")
-	private String dl() {
-//		判断
-		return "redirect:/list";
-	}
+	
 	
 	
 	
