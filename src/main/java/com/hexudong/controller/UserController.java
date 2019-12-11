@@ -8,6 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.hexudong.cms.utils.entity.StringUtils;
 import com.hexudong.eitity.User;
 import com.hexudong.service.UserService;
@@ -61,19 +63,19 @@ public class UserController {
 		if(result.hasErrors()) {
 			return "user/register";
 		}
-		
 		//进行唯一性验证
 		User existUser = service.getUserByUsername(user.getUsername());
 		if(existUser!=null) {
 			result.rejectValue("username", "", "用户名已经存在");
 			return "user/register";
 		}
-				
+		
+		//验证数字
 		//加一个手动的校验
-		if(StringUtils.isNumber(user.getPassword())) {
+		/*if(StringUtils.isNumber(user.getPassword())) {
 			result.rejectValue("passowrd", "", "密码不能全是数字");
 			return "user/register";
-		}
+		}*/
 		
 		// 去注册
 		int reRegister = service.register(user);
@@ -83,13 +85,24 @@ public class UserController {
 			request.setAttribute("eror", "注册失败，请稍后再试！");
 			return "user/register";
 		}
-		
 		//跳转到登录页面
-		return "redirect:login";
+		return "redirect:/login";
 	}
 	
-	
-	
-	
+	/**
+	 * 
+	    * @Title: checkUserName
+	    * @Description: 根据用户名查找用户
+	    * @param @param username
+	    * @param @return    参数
+	    * @return boolean    返回类型
+	    * @throws
+	 */
+	@RequestMapping("checkname")
+	@ResponseBody
+	public boolean checkUserName(String username) {
+		User existUser = service.getUserByUsername(username);
+		return existUser==null;
+	}
 	
 }
