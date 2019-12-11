@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hexudong.eitity.LoginUser;
+import com.hexudong.eitity.User;
 import com.hexudong.service.UserService;
 
 @Controller
