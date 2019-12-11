@@ -33,7 +33,12 @@
 	</properties>
   
   	<dependencies>
-  		
+  		<!-- 引入工具包 -->
+  		<dependency>
+  			<groupId>com.hexudong</groupId>
+	  		<artifactId>hexudong-cms-utils</artifactId>
+	  		<version>0.0.1-SNAPSHOT</version>
+	  	</dependency>
   	<!-- spring 及springMVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
