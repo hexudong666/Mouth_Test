@@ -20,7 +20,7 @@
 <script type="text/javascript" src="/resource/js/jqueryvalidate/localization/messages_zh.js"></script>
 </head>
 <body>
-		<nav class="nav fixed-top justify-content-center" style="background:#2FFFFF;height:50px " > 欢迎登录CMS系统 </nav>
+<nav class="nav fixed-top justify-content-center" style="background:#2FFFFF;height:50px " > 欢迎登录CMS系统 </nav>
 	<div  class="container-fulid"  style="margin-top:80px;height:600px" >
 		 <div class="container" >
 		 	<div class="row">

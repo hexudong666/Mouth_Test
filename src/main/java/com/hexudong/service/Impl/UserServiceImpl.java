@@ -15,7 +15,6 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserMapper mapper;
-	
 	/**
 	 * 
 	 */
@@ -26,10 +25,18 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public int register(@Valid User user) {
-		/*到这了**/
-		String encryPwd =CmsUtils.encty(user.getPassword(),user.getUsername().substring(2,4));
+		
+		String encryPwd =CmsUtils.encry(user.getPassword(),user.getUsername().substring(2,4));
 		user.setPassword(encryPwd);
 		return mapper.add(user);
+	}
+	
+	@Override
+	public User login(User user) {
+		// TODO Auto-generated method stub
+				user.setPassword(CmsUtils.encry(user.getPassword(), user.getUsername() ));
+				User loginUser  = mapper.findByPwd(user);
+				return loginUser;
 	}
 	
 }

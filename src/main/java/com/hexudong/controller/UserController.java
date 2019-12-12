@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hexudong.cms.utils.entity.StringUtils;
+import com.hexudong.common.CmsContant;
 import com.hexudong.eitity.User;
 import com.hexudong.service.UserService;
 
@@ -86,7 +87,30 @@ public class UserController {
 			return "user/register";
 		}
 		//跳转到登录页面
-		return "redirect:/login";
+		return "redirect:login";
+	}
+	
+	@RequestMapping(value="login",method=RequestMethod.POST)
+	public String login(HttpServletRequest request,User user) {
+		User loginUser = service.login(user);
+		
+		//登录失败
+		if(loginUser==null) {
+			request.setAttribute("error", "用户名密码错误");
+			return "/user/login";	
+		}
+		
+		// 登录成功，用户信息存放看到session当中
+		request.getSession().setAttribute(CmsContant.USER_KEY, loginUser);
+		
+		// 进入管理界面
+		if (loginUser.getRole()==CmsContant.USER_ROLE_ADMIN) {
+			 return "redirect:/admin/index";
+		}
+		
+		// 进入个人中心
+		return "redirect:/user/home";
+		
 	}
 	
 	/**
@@ -105,4 +129,22 @@ public class UserController {
 		return existUser==null;
 	}
 	
+	//去往文章列表
+	@RequestMapping("articles")
+	public String articles() {
+		return "user/article/list";
+	}
+	/**
+	 * 
+	    * @Title: comments
+	    * @Description: TODO(这里用一句话描述这个方法的作用)
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
+	//去往评论列表
+	@RequestMapping("comments")
+	public String comments() {
+		return "user/comment/list";
+	}
 }

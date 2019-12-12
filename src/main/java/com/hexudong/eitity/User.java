@@ -36,7 +36,7 @@ public class User implements Serializable {
 	private Date updateTime;
 	private String url;// 头像的位置
 	private String score;// 积分
-	private String role; // 角色
+	private int role; // 角色
 	public Integer getId() {
 		return id;
 	}
@@ -103,18 +103,20 @@ public class User implements Serializable {
 	public void setScore(String score) {
 		this.score = score;
 	}
-	public String getRole() {
+	public int getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
+	//tostring
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", nickname=" + nickname
 				+ ", birthday=" + birthday + ", gender=" + gender + ", locked=" + locked + ", createTime=" + createTime
 				+ ", updateTime=" + updateTime + ", url=" + url + ", score=" + score + ", role=" + role + "]";
 	}
+	//哈希比较
 	@Override
 	public int hashCode() {
 		final int prime = 31;

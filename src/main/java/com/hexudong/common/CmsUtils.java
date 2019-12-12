@@ -13,7 +13,7 @@ public class CmsUtils {
     * @return String    返回类型
     * @throws
  */
-	public static String  encty(String src,String salt) {
+	public static String  encry(String src,String salt) {
 		byte[] md5 = DigestUtils.md5(salt+src+salt);
 		try {
 			String endPwd = new String(md5,"UTF-8");
