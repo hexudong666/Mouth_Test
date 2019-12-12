@@ -36,6 +36,10 @@ public class UserController {
 	    * @return String    返回类型
 	    * @throws
 	 */
+	
+	
+	
+	
 	@RequestMapping(value="register",method=RequestMethod.GET)
 	public String register(HttpServletRequest request) {
 		User user  = new User();
@@ -90,6 +94,29 @@ public class UserController {
 		return "redirect:login";
 	}
 	
+	/**
+	 * 
+	    * @Title: login
+	    * @Description: 跳转login
+	    * @param @param request
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
+	@RequestMapping(value="login",method=RequestMethod.GET)
+	public String login(HttpServletRequest request) {
+		return "user/login";
+	}
+	/**
+	 * 
+	    * @Title: login
+	    * @Description: 接受login界面的数据
+	    * @param @param request
+	    * @param @param user
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public String login(HttpServletRequest request,User user) {
 		User loginUser = service.login(user);

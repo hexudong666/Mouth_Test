@@ -33,10 +33,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User login(User user) {
-		// TODO Auto-generated method stub
-				user.setPassword(CmsUtils.encry(user.getPassword(), user.getUsername() ));
-				User loginUser  = mapper.findByPwd(user);
-				return loginUser;
+		user.setPassword(CmsUtils.encry(user.getPassword(), user.getUsername() ));
+		User loginUser  = mapper.findByPwd(user);
+		return loginUser;
 	}
 	
 }
