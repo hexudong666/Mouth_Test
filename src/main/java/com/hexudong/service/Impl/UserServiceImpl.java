@@ -16,20 +16,40 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper mapper;
 	/**
-	 * 
+	 * 	
 	 */
 	@Override
 	public User getUserByUsername(String username) {
 		return mapper.findUserByName(username);
 	}
-	
+	//注册
 	@Override
 	public int register(@Valid User user) {
-		
-		String encryPwd =CmsUtils.encry(user.getPassword(),user.getUsername().substring(2,4));
+		String encryPwd =CmsUtils.encry(user.getPassword(),user.getUsername());
 		user.setPassword(encryPwd);
 		return mapper.add(user);
 	}
+	//登陆
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public User login(User user) {

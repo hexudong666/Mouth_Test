@@ -14,16 +14,7 @@ public class CmsUtils {
     * @throws
  */
 	public static String  encry(String src,String salt) {
-		byte[] md5 = DigestUtils.md5(salt+src+salt);
-		try {
-			String endPwd = new String(md5,"UTF-8");
-			return endPwd;
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return salt+src+salt;
-		}
-				
+		return  DigestUtils.md5Hex(salt+src+salt);
 	}
 	
 }

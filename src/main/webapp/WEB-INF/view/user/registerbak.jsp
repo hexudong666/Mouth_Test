@@ -32,7 +32,6 @@
 			    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 			  </li>
 			</ul>
-
 	</nav>
 	<div class="container-fulid" style="margin-top:80px;height:600px">
 		 <div class="container" >
