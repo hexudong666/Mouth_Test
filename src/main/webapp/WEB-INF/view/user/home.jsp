@@ -69,7 +69,7 @@
     </form>
     <div>
     	<ul class="nav">
-    		<li class="nav-item nav-link"> <img width="35px" height="35px" src="/resource/images/guest.jpg"> </li>
+    		<li class="nav-item nav-link"> <img width="35px" height="35px" src="/WEB-INF/images/MAN.jpg"> </li>
     		<li class="nav-item nav-link">a</li>
     		<li class="nav-item nav-link">c</li>
     		<li class="nav-item nav-link">d</li>
