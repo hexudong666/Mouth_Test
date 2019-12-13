@@ -17,4 +17,10 @@ public class CmsContant {
 	
 	// 管理员
 	public static final int USER_ROLE_ADMIN=1;
+	
+	//每页几条数据
+	public static final int PAGE_SIZE=5;
+	
+	//暂时未知
+	public static final int ARTICLE_STATUS_DEL=1;
 }

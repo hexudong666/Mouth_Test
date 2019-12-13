@@ -3,16 +3,21 @@ package com.hexudong.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.hexudong.cms.utils.entity.StringUtils;
 import com.hexudong.common.CmsContant;
+import com.hexudong.eitity.Article;
 import com.hexudong.eitity.User;
+import com.hexudong.service.ArticleService;
 import com.hexudong.service.UserService;
 
 @Controller
@@ -21,6 +26,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private ArticleService   articleService;
 	
 	@RequestMapping("home")
 	private String getList() {
@@ -156,15 +164,41 @@ public class UserController {
 		return existUser==null;
 	}
 	
+	/**
+	 * 	删除文章
+	 */
+	
+	@RequestMapping("deletearticle")
+	@ResponseBody
+	public boolean deleteArticle(int id) {
+		int result = articleService.delete(id);
+		return result>0;
+	}
+	
+	/**
+	 * 
+	    * @Title: articles
+	    * @Description: 去往文章列表
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
 	//去往文章列表
 	@RequestMapping("articles")
-	public String articles() {
+	public String articles(HttpServletRequest request,@RequestParam(defaultValue="1")int page) {
+		//获取登录的用户
+		User loginUser = (User) request.getSession().getAttribute(CmsContant.USER_KEY);
+		//分页   Article 文章
+		PageInfo<Article> articlePage = articleService.listByUser(loginUser.getId(),page);
+		//发送到前台
+		request.setAttribute("articlePage", articlePage);
 		return "user/article/list";
 	}
+	
 	/**
 	 * 
 	    * @Title: comments
-	    * @Description: TODO(这里用一句话描述这个方法的作用)
+	    * @Description: 去往评论列表
 	    * @param @return    参数
 	    * @return String    返回类型
 	    * @throws
@@ -174,4 +208,8 @@ public class UserController {
 	public String comments() {
 		return "user/comment/list";
 	}
+	
+	
+	
+	
 }
