@@ -6,12 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,10 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.github.pagehelper.PageInfo;
 import com.hexudong.cms.utils.entity.FileUtils;
-import com.hexudong.cms.utils.entity.StringUtils;
 import com.hexudong.common.CmsContant;
 import com.hexudong.eitity.Article;
 import com.hexudong.eitity.Category;
@@ -40,14 +36,16 @@ public class UserController {
 	@Value("${upload.path}")
 	String picRootPath;
 	
-	@Value("${pic.path}")
-	String picUrl;
+	/*@Value("${pic.path}")
+	String picUrl;*/
 	
+	//登录人事务
 	@Autowired
 	private UserService service;
 	
+	//文章事务
 	@Autowired
-	private ArticleService   articleService;
+	private ArticleService articleService;
 	
 	@RequestMapping("home")
 	private String getList() {
@@ -217,8 +215,10 @@ public class UserController {
 	public String articles(HttpServletRequest request,@RequestParam(defaultValue="1")int page) {
 		//获取登录的用户
 		User loginUser = (User) request.getSession().getAttribute(CmsContant.USER_KEY);
+		
 		//分页   Article 文章
 		PageInfo<Article> articlePage = articleService.listByUser(loginUser.getId(),page);
+		
 		//发送到前台
 		request.setAttribute("articlePage", articlePage);
 		return "user/article/list";
@@ -250,6 +250,10 @@ public class UserController {
 		return "user/article/post";
 		
 	}
+	
+	/**
+	 * 	修改没做
+	 */
 	
 	
 	/**
@@ -338,6 +342,8 @@ public class UserController {
 			file.transferTo(new File(picRootPath+"/" + subPath + "/" + fileName));
 			return  subPath + "/" + fileName;
 	}
-	
+	/***
+	 *	 修改没做
+	 */
 	
 }

@@ -13,15 +13,16 @@ import com.hexudong.eitity.Category;
 import com.hexudong.eitity.Channel;
 import com.hexudong.mapper.ArticleMapper;
 import com.hexudong.service.ArticleService;
+
+
+
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
 	@Autowired
-	ArticleMapper articleMapper;
+	private  ArticleMapper articleMapper;
 	
-	
-	
-	
+	//列表
 	@Override
 	public PageInfo<Article> listByUser(Integer id, int page) {
 		//分页

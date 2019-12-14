@@ -20,7 +20,7 @@ public interface ArticleMapper {
 	    * @return List<Article>    返回类型
 	    * @throws
 	 */
-	List<Article> listByUser(Integer id);
+	List<Article> listByUser(@Param("id")Integer id);
 
 	
 	/**
@@ -34,7 +34,7 @@ public interface ArticleMapper {
 	    * @throws
 	 */
 	@Update("UPDATE cms_article SET deleted=#{status} WHERE id=#{id}")
-	int updateStatus(@Param("")int id, int articleStatusDel);
+	int updateStatus(@Param("id")int id, @Param("articleStatusDel")int articleStatusDel);
 
 
 	/**

@@ -3,19 +3,19 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hexudong.mapper.ArticleMapper">
-	<resultMap type="article" id="articleMapper">
+	<resultMap type="com.hexudong.eitity.Article" id="articleMapper">
 		<result property="channelId" column="channel_id"/>
 		<result property="categoryId" column="category_id"/>
-		<association property="channel" column="channel_id" javaType="com.e1708.cms.entity.Channel" 
+		<association property="channel" column="channel_id" javaType="com.hexudong.eitity.Channel" 
 		   select="findChannel"></association>
-		<association property="category" column="category_id" javaType="com.e1708.cms.entity.Category" 
+		<association property="category" column="category_id" javaType="com.hexudong.eitity.Category" 
 		   select="findCatigory"></association>
 	</resultMap>
 	<!-- 每个作者的文章 -->
 	<select id="listByUser" resultMap="articleMapper">
 		SELECT id,title,channel_id,category_id , created,status 
 		  FROM cms_article
-		  WHERE user_id = #{value} AND deleted=0
+		  WHERE user_id = #{id} AND deleted=0
 		  ORDER BY id DESC  
 	</select>
 	
