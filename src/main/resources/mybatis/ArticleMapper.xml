@@ -6,16 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="com.hexudong.eitity.Article" id="articleMapper">
 		<result property="channelId" column="channel_id"/>
 		<result property="categoryId" column="category_id"/>
-		<association property="channel" column="channel_id" javaType="com.hexudong.eitity.Channel" 
-		   select="findChannel"></association>
-		<association property="category" column="category_id" javaType="com.hexudong.eitity.Category" 
-		   select="findCatigory"></association>
+		<association property="channel" column="channel_id" javaType="com.hexudong.eitity.Channel" select="findChannel"></association>
+		<association property="category" column="category_id" javaType="com.hexudong.eitity.Category" select="findCatigory"></association>
 	</resultMap>
+	
 	<!-- 每个作者的文章 -->
 	<select id="listByUser" resultMap="articleMapper">
 		SELECT id,title,channel_id,category_id , created,status 
 		  FROM cms_article
-		  WHERE user_id = #{id} AND deleted=0
+		  WHERE user_id = ${id} AND deleted=0
 		  ORDER BY id DESC  
 	</select>
 	

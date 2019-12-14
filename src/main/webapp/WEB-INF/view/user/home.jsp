@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@taglib uri="http://www.springframework.org/tags/form" prefix="fm" %>
+   <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
    <%@  taglib  prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%
@@ -77,7 +77,6 @@
     </div>
   </div>
 </nav><!--  头结束 -->
-	
 	<div class="container row">
 		<div class="col-md-2" style="margin-top:20px ; border-right:solid 2px"> 
 			<!-- 左侧的菜单 -->

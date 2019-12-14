@@ -156,6 +156,7 @@ public class UserController {
 			return "/user/login";	
 		}
 		
+		System.out.println("loginUser is " + loginUser);
 		// 登录成功，用户信息存放看到session当中
 		request.getSession().setAttribute(CmsContant.USER_KEY, loginUser);
 		
@@ -167,9 +168,6 @@ public class UserController {
 		// 进入个人中心
 		return "redirect:/user/home";
 	}
-	
-	
-	
 	
 	
 	/**
@@ -214,8 +212,12 @@ public class UserController {
 	@RequestMapping("articles")
 	public String articles(HttpServletRequest request,@RequestParam(defaultValue="1")int page) {
 		//获取登录的用户
+		
 		User loginUser = (User) request.getSession().getAttribute(CmsContant.USER_KEY);
 		
+		System.out.println("loginuwer jis " + loginUser);
+		
+		System.out.println("articleService jis " + articleService);
 		//分页   Article 文章
 		PageInfo<Article> articlePage = articleService.listByUser(loginUser.getId(),page);
 		
@@ -239,14 +241,21 @@ public class UserController {
 	}
 	
 	
+	/**
+	 * 
+	    * @Title: postArticle
+	    * @Description: 发表文章,   查了个栏目
+	    * @param @param request
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
 	@RequestMapping("postArticle")
 	public String postArticle(HttpServletRequest request) {
 		//获取栏目
 		List<Channel> channels = articleService.getChannels();
-		
 		//往前台发
 		request.setAttribute("channels", channels);
-			
 		return "user/article/post";
 		
 	}
