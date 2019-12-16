@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>这是列表</title>
+<title>用户个人中心</title>
 <link href="/resource/bootstrap-4.3.1/css/bootstrap.css" rel="stylesheet">
 <script type="text/javascript" src="/resource/js/jquery-3.2.1/jquery.js" ></script>
 <script type="text/javascript" src="/resource/bootstrap-4.3.1/js/bootstrap.js"></script>
@@ -22,7 +22,8 @@
  <script charset="utf-8" src="/resource/kindeditor/plugins/code/prettify.js"></script>
  <script charset="utf-8" src="/resource/kindeditor/kindeditor-all.js"></script>
  <script charset="utf-8" src="/resource/kindeditor/lang/zh-CN.js"></script>
-
+ <link rel="stylesheet" type="text/css" href="<%=path%>/css/index_work.css"/> 
+<script type="text/javascript" src="<%=path%>/js/jquery-1.11.1.min.js"></script>
 
 <style type="text/css">
 	.menuselected {
@@ -34,12 +35,12 @@
 </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background:#6600FF"><!-- 头部的底色 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background:#87CEEB"><!-- 头部的底色 -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background:#87CEEB"><!-- 头部表面颜色 -->
     
     <ul class="navbar-nav mr-auto">
     	<li class="nav-item">
-           <a class="nav-link" href="#"><img src="/WEB-INF/images/3.jpg"> </a>
+           <a class="nav-link" href="#"><img src="/resource/images/logo.png" height="50px" width="50px"> </a>
       </li>
       
       <li class="nav-item active">
@@ -69,7 +70,7 @@
     </form>
     <div>
     	<ul class="nav">
-    		<li class="nav-item nav-link"> <img width="35px" height="35px" src="/WEB-INF/images/MAN.jpg"> </li>
+    		<li class="nav-item nav-link"> <img width="35px" height="35px" src="/resource/images/MAN.jpg"> </li>
     		<li class="nav-item nav-link">a</li>
     		<li class="nav-item nav-link">c</li>
     		<li class="nav-item nav-link">d</li>
@@ -112,6 +113,15 @@
 		obj.parent().addClass("menuselected")
 		$("#workcontent").load(url);
 	}
+	
+	 KindEditor.ready(function(K) {
+			window.editor1 = K.create('#contentId', {
+				cssPath : '/resource/kindeditor/plugins/code/prettify.css',
+				//uploadJson : '/resource/kindeditor/jsp/upload_json.jsp',
+				uploadJson:'/file/upload'// );
+			   })
+			prettyPrint();
+		});
 </script>
 
 

@@ -18,5 +18,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  ORDER BY id DESC  
 	</select>
 	
+	<select id="list" resultMap="articleMapper">
+		SELECT id,title,channel_id,category_id ,user_id, created,status 
+		  FROM cms_article
+		  WHERE status = #{value} AND deleted=0
+		  ORDER BY id DESC 
+	</select>
+	
+	
+	<!-- 获取频道 -->
+	<select id="findChannel" resultType="com.hexudong.eitity.Channel">
+		SELECT id,name FROM cms_channel WHERE id=#{value}
+	</select>
+	
+	<!-- 获取分类 -->
+	<select id="findCatigory" resultType="com.hexudong.eitity.Category">
+		SELECT id,name FROM cms_category WHERE id=#{value}
+	</select>
+	
+	<select id="findById" resultMap="articleMapper">
+		SELECT * FROM cms_article WHERE id=#{value} AND deleted=0
+	</select>
+	
 	
 </mapper>
