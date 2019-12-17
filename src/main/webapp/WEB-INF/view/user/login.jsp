@@ -20,20 +20,19 @@
 <script type="text/javascript" src="/resource/js/jqueryvalidate/localization/messages_zh.js"></script>
 </head>
 <body>
-<nav class="nav fixed-top justify-content-center" style="background:#2FFFFF;height:50px " > 欢迎登录CMS系统 </nav>
-	<div  class="container-fulid"  style="margin-top:80px;height:600px" >
+<nav class="nav fixed-top justify-content-center" style="background:#87CEEB;height:50px " > 欢迎登录CMS系统 </nav>
+	<div  class="container-fulid"  style="margin-top:80px;height:600px">
 		 <div class="container" >
 		 	<div class="row">
 		 		${error}
 		 	</div>
-		 	<div class="row">
+		 	<div class="row" style="background-image: url(/css/img/asd.png)">
 		 		
 		 		<div class="col-md-6 offset-3" style="background:url(/resource/images/login_backup.jpg);">
 		 			<form modelAttribute="user" max="8" min="2" id="form" action="" method="post" >
 						  <div class="form-group">
 						    <label >用户名</label>
-						    <input type="text" name="username"  class="form-control" 
-						    />
+						    <input type="text" name="username"  class="form-control"/>
 						  </div>
 						  <div class="form-group">
 						    <label>密码</label>
@@ -46,7 +45,7 @@
 		 	</div>
 		 </div>
 	</div>
-	<nav class="nav fixed-bottom justify-content-center"  style="background:#2FFFFF;height:50px "  > cms 网站 </nav>
+	<nav class="nav fixed-bottom justify-content-center"  style="background:#FFDAB9;height:50px "  > cms 网站 </nav>
 	<script type="text/javascript">
 		$("#form").validate();
 		function add(){

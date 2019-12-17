@@ -23,5 +23,21 @@ public interface ArticleService {
 
 	int add(Article article);
 	
+	//根据文章id获取文章对象
+	Article getById(int id);
+
+	int update(Article article, Integer id);
+
+	//获取文章的简要信息  常常用于判断文章的存在性
+	Article getInfoById(int id);
+
+	//设置热门不热门
+	int setHot(int id, int status);
+
+	// 修改数据
+	int setCheckStatus(int id, int status);
+
+	PageInfo<Article> list(int status, int page);
+	
 
 }

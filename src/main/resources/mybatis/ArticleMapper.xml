@@ -40,5 +40,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM cms_article WHERE id=#{value} AND deleted=0
 	</select>
 	
+	<select id="getById" resultMap="articleMapper">
+		SELECT * FROM cms_article WHERE id=#{value} AND deleted=0
+	</select>
 	
 </mapper>

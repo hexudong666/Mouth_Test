@@ -59,4 +59,56 @@ public class ArticleServiceImpl implements ArticleService {
 	public int add(Article article) {
 		return articleMapper.add(article);
 	}
+	
+	//根据文章id获取文章对象
+	@Override
+	public Article getById(int id) {
+		// TODO Auto-generated method stub
+		return articleMapper.getById(id);
+	}
+	
+	
+	
+	@Override
+	public int update(Article article, Integer userId) {
+		// TODO Auto-generated method stub
+		Article articleSrc = this.getById(article.getId());
+		if(articleSrc.getUserId() != userId) {
+			// todo 如果  不是自己的文章 就不查
+		}
+		return articleMapper.update(article);
+	}
+	
+	
+	
+	
+	//获取文章的简要信息  常常用于判断文章的存在性
+	@Override
+	public Article getInfoById(int id) {
+		return articleMapper.getInfoById(id);
+	}
+	
+	
+	//设置热门/不热门
+	@Override
+	public int setHot(int id, int status) {
+		return articleMapper.setHot(id,status);
+	}
+	
+	// 修改数据
+	@Override
+	public int setCheckStatus(int id, int status) {
+		// TODO Auto-generated method stub
+		return articleMapper.CheckStatus(id,status);
+	}
+	
+	
+	@Override
+	public PageInfo<Article> list(int status, int page) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(page, CmsContant.PAGE_SIZE);
+		return new PageInfo<Article>(articleMapper.list(status));
+	}
+	
+	
 }

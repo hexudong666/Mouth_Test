@@ -153,7 +153,7 @@
 		</dependency>
 
 
-		<!-- 单元测试 -->
+		<!-- 单元测试   ,如果再次导入将报  调用的工具类的方法的错-->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

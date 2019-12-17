@@ -7,10 +7,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.github.pagehelper.PageInfo;
 import com.hexudong.cms.utils.entity.FileUtils;
+import com.hexudong.cms.utils.entity.HtmlUtils;
 import com.hexudong.common.CmsContant;
 import com.hexudong.eitity.Article;
 import com.hexudong.eitity.Category;
@@ -36,8 +39,8 @@ public class UserController {
 	@Value("${upload.path}")
 	String picRootPath;
 	
-	/*@Value("${pic.path}")
-	String picUrl;*/
+	@Value("${pic.path}")
+	String picUrl;
 	
 	//登录人事务
 	@Autowired
@@ -147,7 +150,7 @@ public class UserController {
 	    * @throws
 	 */
 	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String login(HttpServletRequest request,User user) {
+	public String login(HttpServletRequest request,User user,Model model) {
 		User loginUser = service.login(user);
 		
 		//登录失败
@@ -159,7 +162,9 @@ public class UserController {
 		System.out.println("loginUser is " + loginUser);
 		// 登录成功，用户信息存放看到session当中
 		request.getSession().setAttribute(CmsContant.USER_KEY, loginUser);
+		model.addAttribute("uname", loginUser);
 		
+		//管理员登录
 		// 进入管理界面
 		if (loginUser.getRole()==CmsContant.USER_ROLE_ADMIN) {
 			 return "redirect:/admin/index";
@@ -250,6 +255,7 @@ public class UserController {
 	    * @return String    返回类型
 	    * @throws
 	 */
+	//查询
 	@RequestMapping("postArticle")
 	public String postArticle(HttpServletRequest request) {
 		//获取栏目
@@ -260,9 +266,6 @@ public class UserController {
 		
 	}
 	
-	/**
-	 * 	修改没做
-	 */
 	
 	
 	/**
@@ -274,12 +277,14 @@ public class UserController {
 	    * @return List<Category>    返回类型
 	    * @throws
 	 */
+	//查询
 	@RequestMapping("getCategoris")
 	@ResponseBody
 	public List<Category> getCategoris(int cid){
 		List<Category> categoris = articleService.getCategorisByCid(cid);
 		return categoris;
 	}
+	
 	
 	
 	/**
@@ -293,11 +298,10 @@ public class UserController {
 	    * @return boolean    返回类型
 	    * @throws
 	 */
+	//文件
 	@RequestMapping(value = "postArticle",method=RequestMethod.POST)
 	@ResponseBody
-	public boolean postArticle(HttpServletRequest request, Article article, 
-			MultipartFile file
-			) {
+	public boolean postArticle(HttpServletRequest request, Article article, MultipartFile file) {
 		
 		String picUrl;
 		try {
@@ -331,8 +335,9 @@ public class UserController {
 	    * @return String    返回类型
 	    * @throws
 	 */
+	//文件
 	private String processFile(MultipartFile file) throws IllegalStateException, IOException {
-		// 判断目标目录时间否存在
+			// 判断目标目录时间否存在
 			//picRootPath + ""
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 			String subPath = sdf.format(new Date());
@@ -352,7 +357,68 @@ public class UserController {
 			return  subPath + "/" + fileName;
 	}
 	/***
-	 *	 修改没做
+	 *	 修改
 	 */
+	//修改
+	@RequestMapping(value="updateArticle",method=RequestMethod.GET)
+	public String updateArticle(HttpServletRequest request,int id) {	
+		
+		//获取栏目
+		List<Channel> channels= articleService.getChannels();
+		request.setAttribute("channels", channels);
+		
+		//获取文章
+		Article article = articleService.getById(id);
+		User loginUser = (User)request.getSession().getAttribute(CmsContant.USER_KEY);
+		if(loginUser.getId() != article.getUserId()) {
+			// todo  	准备做异常处理
+		}
+		request.setAttribute("article", article);
+		request.setAttribute("content1",  HtmlUtils.htmlspecialchars(article.getContent()));
+		return "user/article/update";
+	}
+	/*
+	 * 修改的数据
+	 */
+	//修改
+	@RequestMapping(value="updateArticle",method=RequestMethod.POST)
+	@ResponseBody
+	public  boolean  updateArticle(HttpServletRequest request,Article article,MultipartFile file) {
+		
+		System.out.println("aarticle is  "  + article);
+		
+		String picUrl;
+		try {
+			// 处理上传文件
+			picUrl = processFile(file);
+			article.setPicture(picUrl);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//当前用户是文章的作者
+		User loginUser = (User)request.getSession().getAttribute(CmsContant.USER_KEY);
+		//article.setUserId(loginUser.getId());
+		int updateREsult  = articleService.update(article,loginUser.getId());
+		return updateREsult>0;
+		
+	}
+	
+	
+	
+	
+	/**
+	 * 注销
+	 */
+	@RequestMapping("loginOut")
+	public String loginOut(HttpSession session) {
+		session.invalidate();
+		return "user/login";
+	}
+	
 	
 }
