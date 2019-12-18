@@ -31,26 +31,6 @@ public class UserServiceImpl implements UserService {
 	}
 	//登陆
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public User login(User user) {
 		user.setPassword(CmsUtils.encry(user.getPassword(), user.getUsername() ));

@@ -5,6 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hexudong.common.CmsError;
+import com.hexudong.common.CmsMessage;
+import com.hexudong.eitity.Article;
+import com.hexudong.service.ArticleService;
+
 
 @Controller
 @RequestMapping("article")
@@ -32,7 +37,8 @@ public class ArticleController {
 		
 		// 返回数据
 		return new CmsMessage(CmsError.SUCCESS,"",article); 
-		
 	}
 
+	
+	
 }

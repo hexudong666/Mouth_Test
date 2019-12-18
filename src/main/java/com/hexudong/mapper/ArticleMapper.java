@@ -106,6 +106,13 @@ public interface ArticleMapper {
 	@Update("UPDATE cms_article SET status=#{myStatus} WHERE id=#{myid}")
 	int CheckStatus(@Param("myid") int id, @Param("myStatus") int status);
 
+
+	/**
+	 * 文章列表
+	 * @param status  文章状态
+	 */
+	List<Article> list(int status);
+
 	
 
 }
