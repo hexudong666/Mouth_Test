@@ -52,7 +52,6 @@
 		   	<c:forEach begin="1" end="${articlePage.pages}" varStatus="i">
 		   		<li class="page-item"><a class="page-link" href="#" onclick="gopage(${i.index})">${i.index}</a></li>
 		   	</c:forEach>
-		   
 		    <li class="page-item">
 		      <a class="page-link" href="#">Next</a>
 		    </li>
