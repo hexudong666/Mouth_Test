@@ -6,6 +6,8 @@ import com.github.pagehelper.PageInfo;
 import com.hexudong.eitity.Article;
 import com.hexudong.eitity.Category;
 import com.hexudong.eitity.Channel;
+import com.hexudong.eitity.Comment;
+import com.hexudong.eitity.Slide;
 
 public interface ArticleService {
 
@@ -37,7 +39,32 @@ public interface ArticleService {
 	// 修改数据
 	int setCheckStatus(int id, int status);
 
+	//获取文章列表
 	PageInfo<Article> list(int status, int page);
+
+	//添加评论
+	int addComment(Comment comment);
+
+	//获取评论
+	PageInfo<Comment> getComments(int articleId, int page);
+
+	//热门列表
+	PageInfo<Article> hotList(int page);
+
+	//获取最新文章
+	List<Article> lastList();
+
+	//轮播图
+	List<Slide> getSlides();
+
+	
+	//获取栏目下的文章    
+	PageInfo<Article> getArticles(int channelId, int catId, int page);
+
+	
+	//获取栏目下的分类   
+	List<Category> getCategoriesByChannelId(int channelId);
+
 	
 
 }

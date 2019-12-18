@@ -147,7 +147,9 @@
 			  // 提交的方式 
 			  type:"post",
 			  // 成功后的回调函数
-			  success:function(data){ 
+			  success:function(data){
+				  //$("#workcontent").load("/user/articles")
+				  //  
 				  showWork($("#postLink"),"/user/articles")
 			  }
 		 })

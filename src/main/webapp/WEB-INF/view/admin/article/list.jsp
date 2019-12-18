@@ -94,6 +94,13 @@
 <script>
 	var global_article_id;
 	
+	//消失的时候刷新当前的列表避免修改状态后页面还是不能操作
+	$('#articleContent').on('hidden.bs.modal', function (e) {
+		  // do something...
+		refreshPage();
+	})
+	
+	
 	function del(id){
 		alert(id)
 		if(!confirm("您确认删除么？"))
@@ -113,7 +120,7 @@
 		)
 	}
 	
-	function check(id){
+function check(id){
 		
      	$.post("/article/getDetail",{id:id},function(msg){
      		if(msg.code==1){
@@ -148,7 +155,7 @@
 				//隐藏当前的模态框
 				$('#articleContent').modal('hide')
 				//刷新当前的页面
-				refreshPage();
+				//refreshPage();
 				return;	
 			}
 			alert(msg.error);
@@ -160,7 +167,7 @@
 	 0 非热门
 	 1 热门
 	*/
-	function setHot(status){
+function setHot(status){
 		
 		var id = global_article_id;// 文章id
 		$.post("/admin/setArticeHot",{id:id,status:status},function(msg){
@@ -169,7 +176,7 @@
 				//隐藏当前的模态框
 				$('#articleContent').modal('hide')
 				//刷新当前的页面
-				refreshPage();
+				//refreshPage();
 				return;
 			}
 			alert(msg.error);

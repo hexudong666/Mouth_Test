@@ -26,14 +26,17 @@
 	<!-- 配置权限的拦截器 -->
 	 <mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<mvc:exclude-mapping path="/user/login"/>
-			<mvc:exclude-mapping path="/user/register"/>
-			<mvc:exclude-mapping path="/"/>
-			<mvc:exclude-mapping path="/admin/index"/>
-			<mvc:exclude-mapping path="/pic/**"/>
-			<mvc:exclude-mapping path="/resource/**"/>
-			<mvc:exclude-mapping path="/article/showdetail"/>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/user/login" />
+			<mvc:exclude-mapping path="/user/register" />
+			<mvc:exclude-mapping path="/user/checkname" />
+			<mvc:exclude-mapping path="/resource/**" />
+			<mvc:exclude-mapping path="/index/**" />
+			<mvc:exclude-mapping path="/channel/**" />
+			<mvc:exclude-mapping path="/article/**"/>
+			<mvc:exclude-mapping path="/" />
+			<mvc:exclude-mapping path="/pic/**" />
+			<mvc:exclude-mapping path="/file/**" />
 			<bean class="com.hexudong.web.CmsInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors> 

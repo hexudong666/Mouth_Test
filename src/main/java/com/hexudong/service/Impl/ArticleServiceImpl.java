@@ -11,7 +11,10 @@ import com.hexudong.common.CmsContant;
 import com.hexudong.eitity.Article;
 import com.hexudong.eitity.Category;
 import com.hexudong.eitity.Channel;
+import com.hexudong.eitity.Comment;
+import com.hexudong.eitity.Slide;
 import com.hexudong.mapper.ArticleMapper;
+import com.hexudong.mapper.SlideMapper;
 import com.hexudong.service.ArticleService;
 
 
@@ -21,6 +24,9 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Autowired
 	private  ArticleMapper articleMapper;
+	
+	@Autowired
+	private SlideMapper slideMapper;
 	
 	//列表
 	@Override
@@ -102,7 +108,7 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.CheckStatus(id,status);
 	}
 	
-	
+	//获取文章列表
 	@Override
 	public PageInfo<Article> list(int status, int page) {
 		// TODO Auto-generated method stub
@@ -110,5 +116,58 @@ public class ArticleServiceImpl implements ArticleService {
 		return new PageInfo<Article>(articleMapper.list(status));
 	}
 	
+	
+	//添加评论
+	@Override
+	public int addComment(Comment comment) {
+		
+		int result =  articleMapper.addComment(comment);
+		 //文章评论数目自增
+		if(result>0)
+			articleMapper.increaseCommentCnt(comment.getArticleId());
+		return result;
+	}
+	
+	
+	//获取评论
+	@Override
+	public PageInfo<Comment> getComments(int articleId, int page) {
+		PageHelper.startPage(page, CmsContant.PAGE_SIZE);
+		return new PageInfo<Comment>(articleMapper.getComments(articleId));
+	}
+	
+	//获取热门文章
+	@Override
+	public PageInfo<Article> hotList(int page) {
+		PageHelper.startPage(page,CmsContant.PAGE_SIZE);
+		return new PageInfo<>(articleMapper.hostList());
+	}
+	
+	//获取最新文章
+	@Override
+	public List<Article> lastList() {
+		return articleMapper.lastList(CmsContant.PAGE_SIZE);
+	}
+	
+	
+	//轮播图
+	@Override
+	public List<Slide> getSlides() {
+		return slideMapper.list();
+	}
+	
+	//获取栏目下的文章     主页左面
+	@Override
+	public PageInfo<Article> getArticles(int channleId, int catId, int page) {
+		PageHelper.startPage(page,CmsContant.PAGE_SIZE);
+		return new PageInfo<Article>(articleMapper.getArticles(channleId, catId));
+	}
+	
+	
+	//栏目下的分类
+	@Override
+	public List<Category> getCategoriesByChannelId(int channleId) {
+		return articleMapper.getCategoriesByChannelId(channleId);
+	}
 	
 }

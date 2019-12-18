@@ -16,8 +16,9 @@
 
  body {
    font-family: PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,Helvetica Neue,Arial,sans-serif;
-  font-size: 22px;
+  font-size: 17px;
  }
+ 
 
 .menu {
 	display: block;
@@ -29,6 +30,7 @@
 	border-radius: 4px;
 	margin-bottom: 2px;
 	transition-property: color,background-color;
+	font-size: 22px;
 }
 
 .menu:hover {
@@ -53,29 +55,10 @@
 </head>
 <body>
  <!-- 导航条 -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
-  <a class="navbar-brand" href="#"><img src="/resource/images/logo.png"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  
-   <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    
-    <div class="justify-content-end">
-    	<ul class="nav">
-    		<li class="nav-item nav-link"> <img width="35px" height="35px" src="/resource/images/guest.jpg"> </li>
-    	
-    		<li class="nav-item nav-link">a</li>
-    		<li class="nav-item nav-link">c</li>
-    		<li class="nav-item nav-link">d</li>
-    	</ul>
-    </div>
-    
-</nav>
-<div class="container-fluid" style="margin-top:20px">
+ 
+ <jsp:include page="common/header.jsp"></jsp:include>
+
+<div class="container-fluid" style="margin-top:20px;margin-bottom:20px">
 	<div class="row">
 		<!-- 左侧栏目 -->
 		<div class="col-md-2">
@@ -130,7 +113,7 @@
 				<c:forEach items="${articlePage.list}" var="article">
 					<div class="row" style="margin-top:5px">
 						<div class="col-md-3">
-							<img src="/pic/${article.picture}"
+							<img  width="150px" height="120px" src="/pic/${article.picture}"
 							  onerror="this.src='/resource/images/guest.jpg'"
 							  class="rounded" style="border-radius:12px!important;"
 							 >
@@ -145,7 +128,45 @@
 					</div>
 				</c:forEach>
 			</div>
+			
+			<!-- 分页开始 -->
+			<div class="row justify-content-center" style="margin-top:20px">
+				<nav aria-label="Page navigation example" >
+					  <ul class="pagination ">
+					  
+					    <li class="page-item">
+					      <a class="page-link" href="/index?page=${articlePage.pageNum-1}" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					      </a>
+					    </li>
+					    
+					    <c:forEach begin="1" end="${articlePage.pages}" varStatus="index">
+					    	
+					    	<!-- 当前页码的处理 -->
+					    	<c:if test="${articlePage.pageNum==index.index}">
+					    		<li class="page-item"><a class="page-link" href="javascript:void()"><font color="red"> ${index.index} </font></a>  </li>
+					  		</c:if>
+					  		
+					  		<!-- 非当前页码的处理 -->
+							<c:if test="${articlePage.pageNum!=index.index}">
+					    		<li class="page-item"><a class="page-link" href="/index?page=${index.index}"> ${index.index}</a></li>
+					  		</c:if>
+					  
+					    </c:forEach>
+					    
+					    <li class="page-item">
+					      <a class="page-link" href="/index?page=${articlePage.pageNum+1}" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					      </a>
+					    </li>
+					    
+					  </ul>
+					</nav>
+			</div>
+			<!-- 分页结束 -->
+			
 		</div>
+		
 		<!-- 右侧 -->
 		<div class="col-md-4">
 				
@@ -179,6 +200,8 @@
 		</div>
 	</div>
 </div>
+
+<jsp:include page="common/footer.jsp"></jsp:include>
 
 
 </body>

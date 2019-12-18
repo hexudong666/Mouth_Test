@@ -16,7 +16,7 @@
 
  body {
    font-family: PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,Helvetica Neue,Arial,sans-serif;
-  font-size: 22px;
+  font-size: 17px;
  }
  
  .myactive {
@@ -33,6 +33,7 @@
 	border-radius: 4px;
 	margin-bottom: 2px;
 	transition-property: color,background-color;
+	font-size: 22px;
 }
 
 .menu:hover {
@@ -57,21 +58,9 @@
 </head>
 <body>
  <!-- 导航条 -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </div>
-  </div>
-</nav>
-<div class="container-fluid" style="margin-top:20px">
+ <jsp:include page="common/header.jsp"></jsp:include>
+
+<div class="container-fluid" style="margin-top:20px;margin-bottom:20px">
 	<div class="row">
 		<!-- 左侧栏目 -->
 		<div class="col-md-2">
@@ -107,7 +96,7 @@
 				<c:forEach items="${articlePage.list}" var="article">
 					<div class="row" style="margin-top:5px">
 						<div class="col-md-3">
-							<img src="/pic/${article.picture}"
+							<img width="150px" height="120px" src="/pic/${article.picture}"
 							  onerror="this.src='/resource/images/guest.jpg'"
 							  class="rounded" style="border-radius:12px!important;"
 							 >
@@ -122,6 +111,32 @@
 					</div>
 				</c:forEach>
 			</div>
+			
+			<!-- 分页开始 -->
+			<div class="row justify-content-center" style="margin-top:20px">
+				<nav aria-label="Page navigation example" >
+					  <ul class="pagination ">
+					  
+					    <li class="page-item">
+					      <a class="page-link" href="/channel?channelId=${channelId}&catId=${catId}&page=${articlePage.pageNum-1}" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					      </a>
+					    </li>
+					    
+					    <c:forEach begin="1" end="${articlePage.pages}" varStatus="index">
+					    	<li class="page-item"><a class="page-link" href="/channel?channelId=${channelId}&catId=${catId}&page=${index.index}"> ${index.index}</a></li>
+					    </c:forEach>
+					    
+					    <li class="page-item">
+					      <a class="page-link" href="/channel?channelId=${channelId}&catId=${catId}&page=${articlePage.pageNum+1}" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					      </a>
+					    </li>
+					    
+					  </ul>
+					</nav>
+			</div>
+			<!-- 分页结束 -->
 		</div>
 		<!-- 右侧 -->
 		<div class="col-md-4">
@@ -156,6 +171,7 @@
 		</div>
 	</div>
 </div>
+<jsp:include page="common/footer.jsp"></jsp:include>
 
 
 </body>

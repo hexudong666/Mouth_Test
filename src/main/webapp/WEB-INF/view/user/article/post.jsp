@@ -14,8 +14,9 @@
 	<script charset="utf-8" src="/resource/kindeditor/kindeditor-all.js"></script>
     <script charset="utf-8" src="/resource/kindeditor/lang/zh-CN.js"></script>
 
-
-新建文章   
+	
+	    
+    新建文章   
 <form name="articleform"  id="articleform">
   
   <div class="form-group">
@@ -49,6 +50,7 @@
   <div class="form-group">
     <label for="content1">文章内容</label>
     <textarea name="content1" id="contentId" cols="200" rows="200" style="width:700px;height:200px;visibility:hidden;"></textarea> 
+    
   </div>
   
   <div class="form-group">
@@ -57,7 +59,7 @@
 </form>
 <script>
 	$("#channel").change(function(){
-		console.log("您选中的栏目是 " + $("#channel").val())
+		console.log("选中的数据是 " + $("#channel").val())
 		$.post("/user/getCategoris",{cid:$("#channel").val()},
 				function(data){
 					$("#category").empty();
@@ -71,14 +73,14 @@
 	 $(document).ready( function(){
 		 
 		KindEditor.ready(function(K) {
-			
+			//    textarea[name="content1"]
 			editor = K.create('#contentId', {
 			cssPath : '/resource/kindeditor/plugins/code/prettify.css',
-			
-			
+			//uploadJson : '/resource/kindeditor/jsp/upload_json.jsp',
+			//uploadJson:'/file/upload.do',
 			uploadJson:'/file/uploads.do',
 			fileManagerJson:'/file/manager',
-			
+			//fileManagerJson : '/resource/kindeditor/jsp/file_manager_json.jsp',
 			allowFileManager : true,
 				afterCreate : function() {
 					var self = this;
@@ -100,7 +102,7 @@
 	
 	  
 	  function readyTxt(){
-		  alert("您写的文章内容为"+editor.html());
+		  alert(editor.html());
 		  
 		//  var formdata = new FormData($("#articleform"))
 		// 生成formData  异步提交的数据包含附件  
@@ -112,22 +114,19 @@
 		  formData.set("content",editor.html());
 		console.log("222222222222")
 		 
-		//原生ajax
 		  $.ajax({url:"postArticle",
 			  dataType:"json",
 			  data:formData,
-			  
 			  // 让jQuery 不要再提交数据之前进行处理
 			  processData : false,
-			  
 			  // 提交的数据不能加消息头
 			  contentType : false,
-			  
 			  // 提交的方式 
 			  type:"post",
-			  
 			  // 成功后的回调函数
 			  success:function(data){
+				  //$("#workcontent").load("/user/articles")
+				  //  
 				  showWork($("#postLink"),"/user/articles")
 			  }
 			  })

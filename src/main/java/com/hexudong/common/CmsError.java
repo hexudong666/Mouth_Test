@@ -24,4 +24,11 @@ public class CmsError {
 	 */
 	public static final int NEEDNT_UPDATE = 5; 
 
+	/*
+	 * 没有登录
+	 */
+	public static final int NOT_LOGIN = 10; 
+
+	
+	
 }

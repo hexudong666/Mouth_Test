@@ -46,14 +46,46 @@
 		</div>
 		<div>
 			<!-- 发布评论 -->
-			<textarea rows="5" cols="500">
-			
+			<textarea rows="5" cols="160" id="commentText">
+				
 			</textarea>
+			<input type="button" class="btn btn-primary" onclick="addComment()" value="发表评论">
 		</div>
-		<div>
-			显示评论
+		<div id="comment">
+			
 		</div>
 	</div>
+	<script type="text/javascript">
+	
+		function gopage(page){
+			showComment(page)
+		}
+		function showComment(page){
+			$("#comment").load("/article/comments?id=${article.id}&page="+page)
+		}
+		
+		$(document).ready(function(){
+			// 显示第一页的评论
+			showComment(1)
+		})
+		
+		function addComment(){
+			alert($("#commentText").val());
+			
+			 $.post("/article/postcomment",
+					{articleId:'${article.id}',content:$("#commentText").text()},
+				function(msg){
+					if(msg.code==1){
+						alert('发布成功')
+						$("#commentText").empty()
+					}else{
+						alert(msg.error)
+					}
+					
+				},
+				"json") 
+		}
+	</script>
 
 </body>
 </html>

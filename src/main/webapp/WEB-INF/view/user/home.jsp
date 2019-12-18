@@ -97,10 +97,10 @@
 			<!-- 左侧的菜单 -->
 			<ul class="nav flex-column mymenuselected">
 				  <li class="nav-item ">
-				    <a class="nav-link active" href="#" onclick="showWork($(this),'/user/articles')" >我的文章</a>
+				    <a  class="nav-link active" href="#" onclick="showWork($(this),'/user/articles')" >我的文章</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="#" onclick="showWork($(this),'/user/postArticle')">发表文章</a>
+				    <a id="postLink" class="nav-link" href="#" onclick="showWork($(this),'/user/postArticle')">发表文章</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" href="#" onclick="showWork($(this),'/user/comments')" >我的评论</a>
@@ -112,32 +112,33 @@
 		</div>
 		
 		<div class="col-md-10" id="workcontent"> 
-			
-		</div>	
-	</div>
+		
+	</div>	
+</div>
 	
 <!-- 尾开始 -->
 <nav class="nav fixed-bottom justify-content-center "  style="background:#DEB887" height="50px"> 
 	      欢迎您进入CMS系统
 </nav>
 
-<script type="text/javascript">
+<script type="text/javascript">	
+		
+ 	 KindEditor.ready(function(K) {
+		window.editor1 = K.create('#contentId', {
+			cssPath : '/resource/kindeditor/plugins/code/prettify.css',
+			//uploadJson : '/resource/kindeditor/jsp/upload_json.jsp',
+			uploadJson:'/file/upload'// );
+		   })
+		prettyPrint();
+	});
+	
 	function showWork(obj,url){
 		$(".mymenuselected li").removeClass("menuselected");
-		obj.parent().addClass("menuselected")
+		obj.parent().addClass("menuselected")		
 		$("#workcontent").load(url);
+		
 	}
-	
-	 KindEditor.ready(function(K) {
-			window.editor1 = K.create('#contentId', {
-				cssPath : '/resource/kindeditor/plugins/code/prettify.css',
-				//uploadJson : '/resource/kindeditor/jsp/upload_json.jsp',
-				uploadJson:'/file/upload'// );
-			   })
-			prettyPrint();
-		});
 </script>
-
 
 </body>
 </html>

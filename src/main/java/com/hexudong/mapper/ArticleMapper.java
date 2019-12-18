@@ -3,11 +3,13 @@ package com.hexudong.mapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import com.hexudong.eitity.Article;
 import com.hexudong.eitity.Category;
 import com.hexudong.eitity.Channel;
+import com.hexudong.eitity.Comment;
 
 public interface ArticleMapper {
 
@@ -112,6 +114,44 @@ public interface ArticleMapper {
 	 * @param status  文章状态
 	 */
 	List<Article> list(int status);
+
+
+	//评论
+	@Insert("INSERT INTO cms_comment(articleId,userId,content,created)"
+			+ " VALUES(#{articleId},#{userId},#{content},NOW())")
+	int addComment(Comment comment);
+
+
+	//增加一条评论
+	@Update("UPDATE cms_article SET commentCnt=commentCnt+1 WHERE id=#{value}")
+	void increaseCommentCnt(int articleId);
+
+	
+	//根据文章id获取对应的评论
+	@Select("SELECT c.id,c.articleId,c.userId,u.username as userName,c.content,c.created FROM cms_comment as c "
+			+ " LEFT JOIN cms_user as u ON u.id=c.userId "
+			+ " WHERE articleId=#{value} ORDER BY c.created DESC")
+	List<Comment> getComments(int articleId);
+
+
+	//获取热门文章
+	List<Article> hostList();
+
+	//获取最新文章
+	List<Article> lastList(int pageSize);
+
+
+	//根据分类和栏目获取文章
+	List<Article> getArticles(@Param("channelId")  int channleId, @Param("catId") int catId);
+
+
+	//获取栏目下的分类
+	@Select("SELECT id,name FROM cms_category where channel_id=#{value}")
+	@ResultType(Category.class)
+	List<Category> getCategoriesByChannelId(int channleId);
+
+
+
 
 	
 
