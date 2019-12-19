@@ -50,6 +50,7 @@
 				
 			</textarea>
 			<input type="button" class="btn btn-primary" onclick="addComment()" value="发表评论">
+			<a href="http://localhost:8084/"><input type="button" value="返回首页"></a>
 		</div>
 		<div id="comment">
 			
@@ -82,10 +83,8 @@
 						alert(msg.error)
 					}
 					
-				},
-				"json") 
+				},"json") 
 		}
 	</script>
-
 </body>
 </html>

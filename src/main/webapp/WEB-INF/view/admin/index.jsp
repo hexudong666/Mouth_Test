@@ -15,22 +15,34 @@
 
 <style type="text/css">
 	.menuselected {
-		background:red;
+		background:#7FFFD4;
 	}
 	.mymenuselected li:hover {
-		background:blue;
+		background:#00FFFF;
 	}
 </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background:#6600FF">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background:#6600FF">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background:#87CEFA">
     
     <div>
     	<ul class="nav">
     		<li class="nav-item nav-link"> <img width="35px" height="35px" src="/resource/images/guest.jpg"> </li>
     	
-    		<li class="nav-item nav-link">a</li>
+    		<li class="nav-item nav-link">
+				<script language="javaScript">
+					now = new Date(),hour = now.getHours()
+					if(hour < 6){document.write("凌晨好!")}
+					else if (hour < 9){document.write("早上好!")}
+					else if (hour < 12){document.write("上午好!")}
+					else if (hour < 14){document.write("中午好!")}
+					else if (hour < 17){document.write("下午好!")}
+					else if (hour < 19){document.write("傍晚好!")}
+					else if (hour < 22){document.write("晚上好!")}
+					else {document.write("夜里好!")}
+				</script>
+			</li>
     		<li class="nav-item nav-link">c</li>
     		<li class="nav-item nav-link">d</li>
     	</ul>
@@ -64,8 +76,8 @@
 	</div>
 	
 <!-- 尾开始 -->
-<nav class="nav fixed-bottom justify-content-center "  style="background:#6600FF" height="50px"> 
-	         CMS  系统后台管理系统  版权所有 违者必奖 
+<nav class="nav fixed-bottom justify-content-center "  style="background:#DEB887" height="50px"> 
+	         CMS  系统后台管理系统  版权及最终解释权归  贺旭东 所有
 </nav>
 
 <script type="text/javascript">	
@@ -75,10 +87,8 @@
 		$(".mymenuselected li").removeClass("menuselected");
 		obj.parent().addClass("menuselected")		
 		$("#workcontent").load(url);
-		
 	}
 </script>
-
 
 </body>
 

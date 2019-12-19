@@ -4,11 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: #D2B48C">
     
     <ul class="navbar-nav mr-auto">
     	<li class="nav-item">
-           <a class="nav-link" href="#"><img src="/resource/images/logo.png"> </a>
+           <a class="nav-link" href="#" ><img src="/resource/images/logo.png"> </a>
       </li> 
     </ul>
     

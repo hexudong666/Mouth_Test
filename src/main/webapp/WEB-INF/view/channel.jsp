@@ -66,9 +66,9 @@
 		<div class="col-md-2">
 			<div>沦落人</div>
 			<div>
-				<ul class="nav flex-column" >
+				<ul class="nav flex-column " >
 					<c:forEach items="${channels}" var="channel">
-						<li  class="nav-item ">
+						<li  class="nav-item">
 						  <a class="nav-link menu ${channelId==channel.id?'myactive':''}" href="/channel?channelId=${channel.id}"> ${channel.name} </a>
 						</li>
 					</c:forEach>
@@ -97,9 +97,8 @@
 					<div class="row" style="margin-top:5px">
 						<div class="col-md-3">
 							<img width="150px" height="120px" src="/pic/${article.picture}"
-							  onerror="this.src='/resource/images/guest.jpg'"
-							  class="rounded" style="border-radius:12px!important;"
-							 >
+							  onerror="this.src='/resource/images/guest.jpg'" class="rounded" style="border-radius:12px!important;">
+							 <!-- 文章默认图片      	   ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑			-->
 						</div>
 						<div class="col-md-9">
 							<a href="/article/detail?id=${article.id}" target="_blank">${article.title}</a>

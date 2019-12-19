@@ -78,8 +78,6 @@ public class ArticleController {
 		
 	}
 	
-	
-	
 		@RequestMapping("comments")
 		public String comments(HttpServletRequest request,int id,int page) {
 			PageInfo<Comment> commentPage =  articleService.getComments(id,page);

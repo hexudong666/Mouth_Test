@@ -18,6 +18,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  ORDER BY id DESC  
 	</select>
 	
+	<!-- 最新文章 -->
+	<select id="lastList" resultMap="articleMapper">
+		SELECT id,title,channel_id,category_id ,user_id, created,picture
+		  FROM cms_article
+		  WHERE status = 1 AND deleted=0
+		         AND hot = 1 
+		  ORDER BY id DESC 
+		  LIMIT #{value} 
+    </select>
+	
+	<!-- 获取热门文章 -->
+	<select id="hostList" resultMap="articleMapper">
+		SELECT id,title,channel_id,category_id ,user_id, created,picture
+		  FROM cms_article
+		  WHERE status = 1 AND deleted=0
+		         AND hot = 1 
+		  ORDER BY id DESC 
+    </select>
+	
 	<select id="list" resultMap="articleMapper">
 		SELECT id,title,channel_id,category_id ,user_id, created,status 
 		  FROM cms_article

@@ -371,10 +371,11 @@ public class UserController {
 		Article article = articleService.getById(id);
 		User loginUser = (User)request.getSession().getAttribute(CmsContant.USER_KEY);
 		if(loginUser.getId() != article.getUserId()) {
-			// todo  	准备做异常处理
+			// todo 准备做异常处理的！！
 		}
 		request.setAttribute("article", article);
 		request.setAttribute("content1",  HtmlUtils.htmlspecialchars(article.getContent()));
+		
 		return "user/article/update";
 	}
 	/*
