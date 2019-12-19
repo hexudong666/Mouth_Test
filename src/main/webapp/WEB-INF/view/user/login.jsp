@@ -21,7 +21,7 @@
 </head>
 <body>
 <nav class="nav fixed-top justify-content-center" style="background:#87CEEB;height:50px " > 欢迎登录CMS系统 </nav>
-	<div  class="container-fulid"  style="margin-top:80px;height:600px">
+	<div  class="container-fulid"  style="margin-top:80px;height:600px;background-image:url(/resource/images/login_backup.jpg)">
 		 <div class="container" >
 		 	<div class="row">
 		 		${error}

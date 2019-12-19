@@ -102,7 +102,7 @@
 	
 	  
 	  function readyTxt(){
-		  alert(editor.html());
+		  alert("您文章的内容为："+editor.html());
 		  
 		//  var formdata = new FormData($("#articleform"))
 		// 生成formData  异步提交的数据包含附件  
