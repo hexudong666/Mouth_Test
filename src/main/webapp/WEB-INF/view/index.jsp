@@ -53,10 +53,22 @@
 </style>
 
 </head>
+
+
+<body style="background:url(/pic/banner.jpg)"> 
+	<!-- <audio autoplay="autoplay"   id="myaudio"  loop="loop" preload="auto"  
+      src="/resource/audio/jmszl.mp3"/> -->
+      
 <body>
  <!-- 导航条 -->
  
  <jsp:include page="common/header.jsp"></jsp:include>
+
+<div class="container-fluid" style="background: url(/pic/banner.jpg) no-repeat; width:100%; height:100%;overflow: hidden;background-size:cover;" >
+&nbsp;<br/>
+&nbsp;
+</div>
+
 
 <div class="container-fluid" style="margin-top:20px;margin-bottom:20px">
 	<div class="row">

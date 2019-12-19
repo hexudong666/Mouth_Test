@@ -16,14 +16,12 @@
 <script type="text/javascript" src="/resource/bootstrap-4.3.1/js/bootstrap.js"></script>
 <script type="text/javascript" src="/resource/js/jqueryvalidate/jquery.validate.js"></script>
 <script type="text/javascript" src="/resource/js/jqueryvalidate/localization/messages_zh.js"></script>
-
  <link rel="stylesheet" href="/resource/kindeditor/themes/default/default.css" />
  <link rel="stylesheet" href="/resource/kindeditor/plugins/code/prettify.css" />
  <script charset="utf-8" src="/resource/kindeditor/plugins/code/prettify.js"></script>
  <script charset="utf-8" src="/resource/kindeditor/kindeditor-all.js"></script>
  <script charset="utf-8" src="/resource/kindeditor/lang/zh-CN.js"></script>
  <link rel="stylesheet" type="text/css" href="<%=path%>/css/index_work.css"/> 
-<script type="text/javascript" src="<%=path%>/js/jquery-1.11.1.min.js"></script>
 
 <style type="text/css">
 	.menuselected {

@@ -8,6 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="categoryId" column="category_id"/>
 		<association property="channel" column="channel_id" javaType="com.hexudong.eitity.Channel" select="findChannel"></association>
 		<association property="category" column="category_id" javaType="com.hexudong.eitity.Category" select="findCatigory"></association>
+		<association property="user" column="user_id" javaType="com.hexudong.eitity.User"  select="com.hexudong.mapper.UserMapper.findUserById"/>
+	
 	</resultMap>
 	
 	<!-- 每个作者的文章 -->

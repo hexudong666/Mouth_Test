@@ -15,6 +15,7 @@
             <th>作者</th>
             <th>发布时间</th>
             <th>状态</th>
+            <th>是否热门</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -37,6 +38,7 @@
         					</c:otherwise>
         				</c:choose>
         			</td>
+        			<td>${article.hot==1?"热门":"非热门"}</td>
         			<td width="200px">
         				<input type="button" value="删除"  class="btn btn-danger" onclick="del(${article.id})">
         				<input type="button" value="审核"  class="btn btn-warning" onclick="check(${article.id})" >
@@ -94,12 +96,12 @@
 <script>
 	var global_article_id;
 	
-	//消失的时候刷新当前的列表避免修改状态后页面还是不能操作
+	//消失的时候刷新当前的列表
 	$('#articleContent').on('hidden.bs.modal', function (e) {
 		  // do something...
+		 
 		refreshPage();
 	})
-	
 	
 	function del(id){
 		alert(id)
@@ -120,15 +122,14 @@
 		)
 	}
 	
-function check(id){
+	function check(id){
 		
      	$.post("/article/getDetail",{id:id},function(msg){
      		if(msg.code==1){
      			//
      			$("#divTitle").html(msg.data.title);
      			//
-     			$("#divOptions").html("栏目：" +msg.data.channel.name + 
-     					" 分类："+msg.data.category.name + " 作者：" + msg.data.user.username );
+     			$("#divOptions").html("栏目：" +msg.data.channel.name +"分类："+msg.data.category.name + " 作者：" + msg.data.user.username );
      			//
      			$("#divContent").html(msg.data.content);
      			$('#articleContent').modal('show')
@@ -138,10 +139,8 @@ function check(id){
      		}
      		alert(msg.error)
      		
-     		
      	},"json");
 		
-		//$("#workcontent").load("/user/updateArticle?id="+id);
 	}
 	
 	/**
@@ -167,7 +166,7 @@ function check(id){
 	 0 非热门
 	 1 热门
 	*/
-function setHot(status){
+	function setHot(status){
 		
 		var id = global_article_id;// 文章id
 		$.post("/admin/setArticeHot",{id:id,status:status},function(msg){

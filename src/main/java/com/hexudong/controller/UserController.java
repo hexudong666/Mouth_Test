@@ -174,6 +174,13 @@ public class UserController {
 		return "redirect:/user/home";
 	}
 	
+	//在主页退出登陆
+	@RequestMapping("logout")
+	public String home(HttpServletRequest request) {
+		request.getSession().removeAttribute(CmsContant.USER_KEY);
+		return "redirect:/";
+	}
+	
 	
 	/**
 	 * 
@@ -299,7 +306,7 @@ public class UserController {
 	    * @throws
 	 */
 	//文件
-	@RequestMapping(value = "postArticle",method=RequestMethod.POST)
+	@RequestMapping(value ="postArticle",method=RequestMethod.POST)
 	@ResponseBody
 	public boolean postArticle(HttpServletRequest request, Article article, MultipartFile file) {
 		
@@ -408,9 +415,6 @@ public class UserController {
 		return updateREsult>0;
 		
 	}
-	
-	
-	
 	
 	
 	

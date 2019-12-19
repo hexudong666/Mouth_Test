@@ -3,7 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hexudong.mapper.UserMapper">
-
-	
+	<!-- 查询 -->
+	<select id="findUserById" resultType="com.hexudong.eitity.User">
+		SELECT id,username FROM cms_user WHERE id=#{value}
+	</select>
 
 </mapper>

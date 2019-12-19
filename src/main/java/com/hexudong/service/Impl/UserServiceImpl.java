@@ -14,27 +14,30 @@ import com.hexudong.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserMapper mapper;
-	/**
-	 * 	
-	 */
+	UserMapper userMapper;
+
 	@Override
 	public User getUserByUsername(String username) {
-		return mapper.findUserByName(username);
+		// TODO Auto-generated method stub
+		return userMapper.findUserByName(username);
 	}
-	//注册
+
 	@Override
 	public int register(@Valid User user) {
-		String encryPwd =CmsUtils.encry(user.getPassword(),user.getUsername());
+		// TODO Auto-generated method stub
+		// 计算密文
+		String encryPwd = CmsUtils.encry(user.getPassword(),user.getUsername());
+		
 		user.setPassword(encryPwd);
-		return mapper.add(user);
+		return userMapper.add(user);
 	}
-	//登陆
+
 	
 	@Override
 	public User login(User user) {
+		// TODO Auto-generated method stub
 		user.setPassword(CmsUtils.encry(user.getPassword(), user.getUsername() ));
-		User loginUser  = mapper.findByPwd(user);
+		User loginUser  = userMapper.findByPwd(user);
 		return loginUser;
 	}
 	
