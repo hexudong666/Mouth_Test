@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hexudong.common.CmsContant;
-import com.hexudong.eitity.Article;
-import com.hexudong.eitity.Category;
-import com.hexudong.eitity.Channel;
-import com.hexudong.eitity.Comment;
-import com.hexudong.eitity.Slide;
+import com.hexudong.entity.Article;
+import com.hexudong.entity.Category;
+import com.hexudong.entity.Channel;
+import com.hexudong.entity.Comment;
+import com.hexudong.entity.Complain;
+import com.hexudong.entity.Slide;
 import com.hexudong.mapper.ArticleMapper;
 import com.hexudong.mapper.SlideMapper;
 import com.hexudong.service.ArticleService;
@@ -168,6 +169,22 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public List<Category> getCategoriesByChannelId(int channleId) {
 		return articleMapper.getCategoriesByChannelId(channleId);
+	}
+
+	@Override
+	public int addComplian(Complain complain) {
+		//添加投诉到数据库
+		int result = articleMapper.addCoplain(complain);
+		// 增加投诉的数量
+		if(result>0)
+			articleMapper.increaseComplainCnt(complain.getArticleId());
+		return 0;
+	}
+
+	@Override
+	public PageInfo<Complain> getComplains(int articleId, int page) {
+		PageHelper.startPage(page, CmsContant.PAGE_SIZE);
+		return new PageInfo<Complain>(articleMapper.getComplains(articleId));
 	}
 	
 }

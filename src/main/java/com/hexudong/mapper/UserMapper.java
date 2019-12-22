@@ -5,7 +5,7 @@ import javax.validation.Valid;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
-import com.hexudong.eitity.User;
+import com.hexudong.entity.User;
 
 public interface UserMapper {
 	/**

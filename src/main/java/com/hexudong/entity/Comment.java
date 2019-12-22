@@ -1,4 +1,4 @@
-package com.hexudong.eitity;
+package com.hexudong.entity;
 
 import java.util.Date;
 

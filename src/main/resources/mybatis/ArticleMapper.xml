@@ -3,12 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hexudong.mapper.ArticleMapper">
-	<resultMap type="com.hexudong.eitity.Article" id="articleMapper">
+	<resultMap type="com.hexudong.entity.Article" id="articleMapper">
 		<result property="channelId" column="channel_id"/>
 		<result property="categoryId" column="category_id"/>
-		<association property="channel" column="channel_id" javaType="com.hexudong.eitity.Channel" select="findChannel"></association>
-		<association property="category" column="category_id" javaType="com.hexudong.eitity.Category" select="findCatigory"></association>
-		<association property="user" column="user_id" javaType="com.hexudong.eitity.User"  select="com.hexudong.mapper.UserMapper.findUserById"/>
+		<association property="channel" column="channel_id" javaType="com.hexudong.entity.Channel" select="findChannel"></association>
+		<association property="category" column="category_id" javaType="com.hexudong.entity.Category" select="findCatigory"></association>
+		<association property="user" column="user_id" javaType="com.hexudong.entity.User"  select="com.hexudong.mapper.UserMapper.findUserById"/>
 	
 	</resultMap>
 	
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		         AND hot = 1 
 		  ORDER BY id DESC 
     </select>
-	
+	<!-- 列表 -->
 	<select id="list" resultMap="articleMapper">
 		SELECT id,title,channel_id,category_id ,user_id, created,status 
 		  FROM cms_article
@@ -48,12 +48,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 获取频道 -->
-	<select id="findChannel" resultType="com.hexudong.eitity.Channel">
+	<select id="findChannel" resultType="com.hexudong.entity.Channel">
 		SELECT id,name FROM cms_channel WHERE id=#{value}
 	</select>
 	
 	<!-- 获取分类 -->
-	<select id="findCatigory" resultType="com.hexudong.eitity.Category">
+	<select id="findCatigory" resultType="com.hexudong.entity.Category">
 		SELECT id,name FROM cms_category WHERE id=#{value}
 	</select>
 	
@@ -76,5 +76,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  </if>   
 		  ORDER BY id DESC 
     </select>
+
+	
+	<!-- 获取频道 -->
+	<select id="findChannel" resultType="channel">
+		SELECT id,name FROM cms_channel WHERE id=#{value}
+	</select>
+	
+	<!-- 获取分类 -->
+	<select id="findCatigory" resultType="category">
+		SELECT id,name FROM cms_category WHERE id=#{value}
+	</select>
+	<select id="findById" resultMap="articleMapper">
+		SELECT * FROM cms_article WHERE id=#{value} AND deleted=0
+	</select>
+	
+	<select id="getComplains" resultMap="ComplainMapper">
+		SELECT * FROM cms_complain where article_id=#{value}
+	</select>
+	
+	<resultMap type="complain" id="ComplainMapper">
+		<result column="article_id" property="articleId"/>
+		<result column="complain_type" property="complainType"/>
+		<result column="src_url" property="srcUrl"/>
+		<result column="compain_option" property="compainOption"/>
+		<result column="user_id" property="userId"/>
+		<association column="user_id" property="user" 
+			javaType="com.hexudong.entity.User"
+			select="com.hexudong.mapper.UserMapper.findUserById"
+		/>
+	</resultMap>
 	
 </mapper>

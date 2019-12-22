@@ -24,10 +24,10 @@ import com.github.pagehelper.PageInfo;
 import com.hexudong.cms.utils.entity.FileUtils;
 import com.hexudong.cms.utils.entity.HtmlUtils;
 import com.hexudong.common.CmsContant;
-import com.hexudong.eitity.Article;
-import com.hexudong.eitity.Category;
-import com.hexudong.eitity.Channel;
-import com.hexudong.eitity.User;
+import com.hexudong.entity.Article;
+import com.hexudong.entity.Category;
+import com.hexudong.entity.Channel;
+import com.hexudong.entity.User;
 import com.hexudong.service.ArticleService;
 import com.hexudong.service.UserService;
 

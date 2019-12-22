@@ -8,10 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.github.pagehelper.PageInfo;
-import com.hexudong.eitity.Article;
-import com.hexudong.eitity.Category;
-import com.hexudong.eitity.Channel;
-import com.hexudong.eitity.Slide;
+import com.hexudong.entity.Article;
+import com.hexudong.entity.Category;
+import com.hexudong.entity.Channel;
+import com.hexudong.entity.Slide;
 import com.hexudong.service.ArticleService;
 
 @Controller

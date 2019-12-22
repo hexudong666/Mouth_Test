@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
-import com.hexudong.eitity.Slide;
+import com.hexudong.entity.Slide;
 
 public interface SlideMapper {
 	

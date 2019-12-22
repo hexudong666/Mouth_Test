@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hexudong.common.CmsUtils;
-import com.hexudong.eitity.User;
+import com.hexudong.entity.User;
 import com.hexudong.mapper.UserMapper;
 import com.hexudong.service.UserService;
 

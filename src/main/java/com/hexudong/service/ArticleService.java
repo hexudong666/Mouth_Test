@@ -3,11 +3,12 @@ package com.hexudong.service;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
-import com.hexudong.eitity.Article;
-import com.hexudong.eitity.Category;
-import com.hexudong.eitity.Channel;
-import com.hexudong.eitity.Comment;
-import com.hexudong.eitity.Slide;
+import com.hexudong.entity.Article;
+import com.hexudong.entity.Category;
+import com.hexudong.entity.Channel;
+import com.hexudong.entity.Comment;
+import com.hexudong.entity.Complain;
+import com.hexudong.entity.Slide;
 
 public interface ArticleService {
 
@@ -42,12 +43,7 @@ public interface ArticleService {
 	//获取文章列表
 	PageInfo<Article> list(int status, int page);
 
-	//添加评论
-	int addComment(Comment comment);
-
-	//获取评论
-	PageInfo<Comment> getComments(int articleId, int page);
-
+	
 	//热门列表
 	PageInfo<Article> hotList(int page);
 
@@ -64,6 +60,19 @@ public interface ArticleService {
 	
 	//获取栏目下的分类   
 	List<Category> getCategoriesByChannelId(int channelId);
+
+	
+	// 发表评论
+	int addComment(Comment comment);
+
+	//根据文章id获取评论
+	PageInfo<Comment> getComments(int articleId, int page);
+	
+	//添加评论
+	int addComplian( Complain complain);
+
+	//获取投诉
+	PageInfo<Complain> getComplains(int articleId, int page);
 
 	
 

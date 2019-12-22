@@ -40,8 +40,8 @@
 						    <form:password  path="password" class="form-control"  aria-describedby="emailHelp"/>
 							<form:errors path="password"></form:errors>
 						  </div>
-						  <button type="submit" class="btn btn-primary">Submit</button>
-						  <input type="button" class="btn btn-primary" onclick="add()" value="提交"/>
+						  <button type="submit" class="btn btn-primary">注册</button>
+						  <a href="login"> <font color="#FF0033">已经账号，点击这里直接去登录</font> </a>
 						</form:form>
 		 		</div>
 		 	</div>
@@ -56,50 +56,6 @@
 			alert('校验结束')
 		}
 	</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	
 </body>
 </html>

@@ -2,7 +2,7 @@ package com.hexudong.service;
 
 import javax.validation.Valid;
 
-import com.hexudong.eitity.User;
+import com.hexudong.entity.User;
 
 public interface UserService {
 

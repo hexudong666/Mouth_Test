@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageInfo;
 import com.hexudong.common.CmsError;
 import com.hexudong.common.CmsMessage;
-import com.hexudong.eitity.Article;
+import com.hexudong.entity.Article;
 import com.hexudong.service.ArticleService;
 
 @RequestMapping("admin")

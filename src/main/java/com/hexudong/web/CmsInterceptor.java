@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.hexudong.common.CmsContant;
-import com.hexudong.eitity.User;
+import com.hexudong.entity.User;
 
 public class CmsInterceptor implements HandlerInterceptor {
 	

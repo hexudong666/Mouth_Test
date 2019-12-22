@@ -6,10 +6,12 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import com.hexudong.eitity.Article;
-import com.hexudong.eitity.Category;
-import com.hexudong.eitity.Channel;
-import com.hexudong.eitity.Comment;
+
+import com.hexudong.entity.Article;
+import com.hexudong.entity.Category;
+import com.hexudong.entity.Channel;
+import com.hexudong.entity.Comment;
+import com.hexudong.entity.Complain;
 
 public interface ArticleMapper {
 
@@ -149,6 +151,21 @@ public interface ArticleMapper {
 	@Select("SELECT id,name FROM cms_category where channel_id=#{value}")
 	@ResultType(Category.class)
 	List<Category> getCategoriesByChannelId(int channleId);
+
+
+	@Insert("INSERT INTO cms_complain(article_id,user_id,complain_type,"
+			+ "compain_option,src_url,picture,content,email,mobile,created)"
+			+ "   VALUES(#{articleId},#{userId},"
+			+ "#{complainType},#{compainOption},#{srcUrl},#{picture},#{content},#{email},#{mobile},now())")
+	int addCoplain(Complain complain);
+
+
+	@Update("UPDATE cms_article SET complainCnt=complainCnt+1,status=if(complainCnt>10,2,status)  "
+			+ " WHERE id=#{value}")
+	void increaseComplainCnt(Integer articleId);
+
+
+	List<Complain> getComplains(int articleId);
 
 
 

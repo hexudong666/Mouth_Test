@@ -15,6 +15,7 @@
             <th>作者</th>
             <th>发布时间</th>
             <th>状态</th>
+	  	    <th>投诉数</th>
             <th>是否热门</th>
             <th>操作</th>
           </tr>
@@ -38,10 +39,12 @@
         					</c:otherwise>
         				</c:choose>
         			</td>
+					<td>${article.complainCnt}</td>
         			<td>${article.hot==1?"热门":"非热门"}</td>
         			<td width="200px">
         				<input type="button" value="删除"  class="btn btn-danger" onclick="del(${article.id})">
         				<input type="button" value="审核"  class="btn btn-warning" onclick="check(${article.id})" >
+        				<input type="button" value="管理投诉"  class="btn btn-warning" onclick="complainList(${article.id})" >
         			</td>
         		</tr>
         	</c:forEach>
@@ -65,7 +68,32 @@
 		  </ul>
 		</nav>
 		
-		 <!-- 审核文章 -->
+ <!-- 审核文章 -->
+<div class="modal fade"   id="complainModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="margin-left:100px;">
+    <div class="modal-content" style="width:1200px;" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">文章审核</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="complainListDiv">
+         
+         		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" onclick="setStatus(1)">审核通过</button>
+        <button type="button" class="btn btn-primary" onclick="setStatus(2)">审核拒绝</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 查看投书 -->
 <div class="modal fade"   id="articleContent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document" style="margin-left:100px;">
     <div class="modal-content" style="width:1200px;" >
@@ -102,6 +130,15 @@
 		 
 		refreshPage();
 	})
+	
+	/**
+	* 查看文章的投诉
+	*/
+	function complainList(id){
+		$("#complainModal").modal('show')
+		$("#complainListDiv").load("/article/complains?articleId="+id);
+		
+	}
 	
 	function del(id){
 		alert(id)

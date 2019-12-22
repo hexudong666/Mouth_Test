@@ -1,4 +1,4 @@
-package com.hexudong.eitity;
+package com.hexudong.entity;
 
 public class Category extends AbstractCategory {
 

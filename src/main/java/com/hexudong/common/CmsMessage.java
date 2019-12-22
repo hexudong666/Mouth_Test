@@ -4,15 +4,16 @@ import java.io.Serializable;
 
 /**
  * 消息统一
- * @author zhuzg
  *
  */
 public class CmsMessage implements Serializable {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3287996100097746153L;
+	
+	    /**
+	    * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
+	    */
+	    
+	private static final long serialVersionUID = 729044682620186469L;
 	
 	int code;  // 1  是成功   2 其他原因失败
 	String error;// 失败的具体的原因
