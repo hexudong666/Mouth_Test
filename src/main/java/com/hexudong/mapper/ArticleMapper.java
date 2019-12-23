@@ -136,6 +136,8 @@ public interface ArticleMapper {
 	List<Comment> getComments(int articleId);
 
 
+	
+	
 	//获取热门文章
 	List<Article> hostList();
 

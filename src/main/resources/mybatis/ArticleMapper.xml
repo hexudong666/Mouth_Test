@@ -78,18 +78,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
 	
-	<!-- 获取频道 -->
-	<select id="findChannel" resultType="channel">
-		SELECT id,name FROM cms_channel WHERE id=#{value}
-	</select>
-	
-	<!-- 获取分类 -->
-	<select id="findCatigory" resultType="category">
-		SELECT id,name FROM cms_category WHERE id=#{value}
-	</select>
-	<select id="findById" resultMap="articleMapper">
-		SELECT * FROM cms_article WHERE id=#{value} AND deleted=0
-	</select>
 	
 	<select id="getComplains" resultMap="ComplainMapper">
 		SELECT * FROM cms_complain where article_id=#{value}
@@ -101,10 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="src_url" property="srcUrl"/>
 		<result column="compain_option" property="compainOption"/>
 		<result column="user_id" property="userId"/>
-		<association column="user_id" property="user" 
-			javaType="com.hexudong.entity.User"
-			select="com.hexudong.mapper.UserMapper.findUserById"
-		/>
+		<association column="user_id" property="user"  javaType="com.hexudong.entity.User" select="com.hexudong.mapper.UserMapper.findUserById"/>
 	</resultMap>
 	
 </mapper>
