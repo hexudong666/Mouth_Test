@@ -127,7 +127,6 @@
 	//消失的时候刷新当前的列表
 	$('#articleContent').on('hidden.bs.modal', function (e) {
 		  // do something...
-		 
 		refreshPage();
 	})
 	

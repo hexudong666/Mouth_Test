@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>同是天涯沦落人</title>
+<title>欢迎来到昨日头条</title>
 <script type="text/javascript" src="/resource/js/jquery-3.2.1/jquery.js" ></script>
 <link href="/resource/bootstrap-4.3.1/css/bootstrap.css" rel="stylesheet">
 <script type="text/javascript" src="/resource/bootstrap-4.3.1/js/bootstrap.js"></script>
@@ -184,7 +184,7 @@
 				
 				<div class="card">
 					  <div class="card-header">
-					    最新文章
+					    最新热门文章
 					  </div>
 					  <div class="card-body">
 					     <ol>

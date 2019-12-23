@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.github.pagehelper.PageInfo;
 import com.hexudong.cms.utils.entity.FileUtils;
 import com.hexudong.cms.utils.entity.HtmlUtils;
+import com.hexudong.cms.utils.entity.StringUtils;
 import com.hexudong.common.CmsContant;
 import com.hexudong.entity.Article;
 import com.hexudong.entity.Category;
@@ -34,7 +37,6 @@ import com.hexudong.service.UserService;
 @Controller
 @RequestMapping("user")
 public class UserController {
-	
 	
 	@Value("${upload.path}")
 	String picRootPath;
@@ -54,6 +56,24 @@ public class UserController {
 	private String getList() {
 		return "user/home";
 	}
+	
+	@RequestMapping("logout")
+	public String home(HttpServletRequest request,HttpServletResponse response) {
+		request.getSession().removeAttribute(CmsContant.USER_KEY);
+		
+		
+		Cookie cookieUserName = new Cookie("username", "");
+		cookieUserName.setPath("/");
+		cookieUserName.setMaxAge(0);// 立即过期
+		response.addCookie(cookieUserName);
+		Cookie cookieUserPwd = new Cookie("userpwd", "");
+		cookieUserPwd.setPath("/");
+		cookieUserPwd.setMaxAge(0);// 立即过期
+		response.addCookie(cookieUserPwd);
+		
+		return "redirect:/";
+	}
+	
 	
 	/**
 	 * 
@@ -150,7 +170,8 @@ public class UserController {
 	    * @throws
 	 */
 	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String login(HttpServletRequest request,User user,Model model) {
+	public String login(HttpServletRequest request,User user,Model model,HttpServletResponse response) {
+		String pwd =  new String(user.getPassword());
 		User loginUser = service.login(user);
 		
 		//登录失败
@@ -164,6 +185,18 @@ public class UserController {
 		request.getSession().setAttribute(CmsContant.USER_KEY, loginUser);
 		model.addAttribute("uname", loginUser);
 		
+		//保存密码明文到cookice
+		//保存用户的用户名和密码
+		Cookie cookieUserName = new Cookie("username", user.getUsername());
+		cookieUserName.setPath("/");
+		cookieUserName.setMaxAge(10*24*3600);// 10天天数*每天的小时数*没小时的秒数
+		response.addCookie(cookieUserName);
+		Cookie cookieUserPwd = new Cookie("userpwd", pwd);
+		cookieUserPwd.setPath("/");
+		cookieUserPwd.setMaxAge(10*24*3600);// 10天   天数*每天的小时数*没小时的秒数
+		response.addCookie(cookieUserPwd);
+		
+		
 		//管理员登录
 		// 进入管理界面
 		if (loginUser.getRole()==CmsContant.USER_ROLE_ADMIN) {
@@ -174,12 +207,12 @@ public class UserController {
 		return "redirect:/user/home";
 	}
 	
-	//在主页退出登陆
+	/*//在主页退出登陆
 	@RequestMapping("logout")
 	public String home(HttpServletRequest request) {
 		request.getSession().removeAttribute(CmsContant.USER_KEY);
 		return "redirect:/";
-	}
+	}*/
 	
 	
 	/**

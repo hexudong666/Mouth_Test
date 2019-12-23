@@ -63,6 +63,7 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
+      <a href="http://localhost:8084/"><input type="button" value="首页"></a>
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
@@ -70,7 +71,7 @@
     	<ul class="nav">
     		<li class="nav-item nav-link"> <img width="35px" height="35px" src="/resource/images/MAN.jpg"> </li>
     		<li class="nav-item nav-link">
-    			111<%-- 用户名字:${sessionScope.uname} --%>
+    			<%-- 用户名字:${sessionScope.uname} --%>
     		</li>
     		<li class="nav-item nav-link">
     			<script language="javaScript">

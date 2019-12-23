@@ -23,6 +23,10 @@
 </style>
 </head>
 <body>
+
+<div style="background: url(/resource/images/background image.jpg)">
+	
+	<!-- <img alt="" src="/resource/images/background image.jpg"> -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background:red">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background:#87CEEB">
     
@@ -36,8 +40,13 @@
     	</ul>
     </div>
   </div>
+	<select >
+		<option value="0">未审核</option>
+		<option value="1">已审核</option>
+		<option value="2">审核被拒</option>
+	</select>
+<br><br><br>
 </nav><!--  头结束 -->
-	
 	<div class="container row">
 		<div class="col-md-2" style="margin-top:20px ; border-right:solid 2px"> 
 			<!-- 左侧的菜单 -->
@@ -57,6 +66,7 @@
 				</ul>	
 		</div>
 		<div class="col-md-10" id="workcontent"> 
+			
 		</div>	
 	</div>
 	
@@ -64,6 +74,7 @@
 <nav class="nav fixed-bottom justify-content-center "  style="background:#FFD700" height="50px"> 
 	         CMS  系统后台管理系统  版权所有 违者必奖 
 </nav>
+</div>
 
 <script type="text/javascript">	
 	
