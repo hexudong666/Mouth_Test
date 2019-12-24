@@ -3,6 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- <div class="container-fluid"> -->
+			<select>
+				<option value="-1">全部</option>
+				<option value="1">审核通过</option>
+				<option value="2">审核拒绝</option>
+				<option value="0">待审核</option>
+			</select>
 	<table class="table">
 		<!-- articlePage -->
 	
@@ -17,7 +23,7 @@
             <th>状态</th>
 	  	    <th>投诉数</th>
             <th>是否热门</th>
-            <th>操作</th>
+            <th width="300px">操作</th>
           </tr>
         </thead>
         <tbody>
@@ -134,6 +140,7 @@
 	* 查看文章的投诉
 	*/
 	function complainList(id){
+		global_article_id=id;
 		$("#complainModal").modal('show')
 		$("#complainListDiv").load("/article/complains?articleId="+id);
 		
@@ -189,6 +196,7 @@
 				alert('操作成功')
 				//隐藏当前的模态框
 				$('#articleContent').modal('hide')
+				$('#complainModal').modal('hide')
 				//刷新当前的页面
 				//refreshPage();
 				return;	
@@ -212,7 +220,7 @@
 				$('#articleContent').modal('hide')
 				//刷新当前的页面
 				//refreshPage();
-				return;
+				return;	
 			}
 			alert(msg.error);
 		},

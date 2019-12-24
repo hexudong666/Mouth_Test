@@ -71,7 +71,7 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public Article getById(int id) {
 		// TODO Auto-generated method stub
-		return articleMapper.getById(id);
+		return articleMapper.findById(id);
 	}
 	
 	
@@ -85,9 +85,15 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 		return articleMapper.update(article);
 	}
-	
-	
-	
+
+	//获取全部文章
+	@Override
+	public PageInfo<Article> list(int status, int page) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(page, CmsContant.PAGE_SIZE);
+		return new PageInfo<Article>(articleMapper.list(status));
+	}
+
 	
 	//获取文章的简要信息  常常用于判断文章的存在性
 	@Override
@@ -110,12 +116,6 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 	
 	//获取文章列表
-	@Override
-	public PageInfo<Article> list(int status, int page) {
-		// TODO Auto-generated method stub
-		PageHelper.startPage(page, CmsContant.PAGE_SIZE);
-		return new PageInfo<Article>(articleMapper.list(status));
-	}
 	
 	
 	//添加评论
@@ -181,6 +181,7 @@ public class ArticleServiceImpl implements ArticleService {
 		return 0;
 	}
 
+	//显示全部文章   不管审核未审核
 	@Override
 	public PageInfo<Complain> getComplains(int articleId, int page) {
 		PageHelper.startPage(page, CmsContant.PAGE_SIZE);

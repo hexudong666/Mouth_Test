@@ -86,7 +86,7 @@
 					else {document.write("夜里好!")}
 				</script>
     		</li>
-    		<li class="nav-item nav-link"><a href="loginOut">注销</a></li>
+    		<!-- <li class="nav-item nav-link"><a href="loginOut">注销</a></li> -->
     	</ul>
     </div>
   </div>
@@ -112,7 +112,7 @@
 		
 		<div class="col-md-10" id="workcontent"> 
 		
-	</div>	
+		</div>	
 </div>
 	
 <!-- 尾开始 -->

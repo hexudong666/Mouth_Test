@@ -63,8 +63,8 @@ public interface ArticleMapper {
 	    * @return List<Category>    返回类型
 	    * @throws
 	 */
-	@Select("SELECT id,name FROM cms_category WHERE channel_id = #{cid}")
-	List<Category> getCategorisByCid(@Param("cid")int cid);
+	@Select("SELECT id,name FROM cms_category WHERE channel_id = #{value}")
+	List<Category> getCategorisByCid(int cid);
 
 	
 	/**
@@ -80,11 +80,12 @@ public interface ArticleMapper {
 			+ " VALUES(#{title},#{content},#{picture},#{channelId},#{categoryId},#{userId},0,0,0,0,now(),now(),0,#{articleType})")
 	int add(Article article);
 
-
-	
-	Article getById(int id);
-
-
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Article findById(int id);
 	
 	/*
 	 * 修改
@@ -126,7 +127,7 @@ public interface ArticleMapper {
 
 	//增加一条评论
 	@Update("UPDATE cms_article SET commentCnt=commentCnt+1 WHERE id=#{value}")
-	void increaseCommentCnt(int articleId);
+	int increaseCommentCnt(int id);
 
 	
 	//根据文章id获取对应的评论
@@ -168,8 +169,6 @@ public interface ArticleMapper {
 
 
 	List<Complain> getComplains(int articleId);
-
-
 
 
 	

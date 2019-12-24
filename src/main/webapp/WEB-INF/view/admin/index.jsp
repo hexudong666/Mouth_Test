@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>cms-个人中心</title>
+<title>cms-管理员界面</title>
 <script type="text/javascript" src="/resource/js/jquery-3.2.1/jquery.js" ></script>
 <link href="/resource/bootstrap-4.3.1/css/bootstrap.css" rel="stylesheet">
 <script type="text/javascript" src="/resource/bootstrap-4.3.1/js/bootstrap.js"></script>
@@ -15,19 +15,16 @@
 
 <style type="text/css">
 	.menuselected {
-		background:#7FFFD4;
+		background:red;
 	}
 	.mymenuselected li:hover {
-		background:#87CEFA;
+		background:blue;
 	}
 </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background:#87CEEB">
 
-<div style="background: url(/resource/images/background image.jpg)">
-	
-	<!-- <img alt="" src="/resource/images/background image.jpg"> -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background:red">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background:#87CEEB">
     
     <div>
@@ -40,12 +37,6 @@
     	</ul>
     </div>
   </div>
-	<select >
-		<option value="0">未审核</option>
-		<option value="1">已审核</option>
-		<option value="2">审核被拒</option>
-	</select>
-<br><br><br>
 </nav><!--  头结束 -->
 	<div class="container row">
 		<div class="col-md-2" style="margin-top:20px ; border-right:solid 2px"> 
@@ -65,16 +56,17 @@
 				  </li>
 				</ul>	
 		</div>
+		
 		<div class="col-md-10" id="workcontent"> 
-			
+		
+		    
 		</div>	
 	</div>
 	
 <!-- 尾开始 -->
-<nav class="nav fixed-bottom justify-content-center "  style="background:#FFD700" height="50px"> 
-	         CMS  系统后台管理系统  版权所有 违者必奖 
+<nav class="nav fixed-bottom justify-content-center "  style="background:#FAFAD2" height="50px"> 
+	         CMS---系统后台管理系统---版权所有---请勿外泄
 </nav>
-</div>
 
 <script type="text/javascript">	
 	
@@ -83,10 +75,8 @@
 		$(".mymenuselected li").removeClass("menuselected");
 		obj.parent().addClass("menuselected")		
 		$("#workcontent").load(url);
-		
 	}
 </script>
-
 
 </body>
 
