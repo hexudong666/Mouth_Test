@@ -160,7 +160,7 @@ public interface ArticleMapper {
 	int addCoplain(Complain complain);
 
 
-	@Update("UPDATE cms_article SET complainCnt=complainCnt+1,status=if(complainCnt>10,2,status)  "
+	@Update("UPDATE cms_article SET complainCnt=complainCnt+1,status=if(complainCnt>50,2,status)  "
 			+ " WHERE id=#{value}")
 	void increaseComplainCnt(Integer articleId);
 
