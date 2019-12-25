@@ -75,5 +75,15 @@ public interface ArticleService {
 	PageInfo<Complain> getComplains(int articleId, int page);
 
 	
+	//获取文章投诉
+	PageInfo<Complain> getWZComplains(int articleId, int page);
+
+	List<Complain> getXq(int articleId);
+
+	void cx(int c1, int c2);
+
+	
+
+	
 
 }

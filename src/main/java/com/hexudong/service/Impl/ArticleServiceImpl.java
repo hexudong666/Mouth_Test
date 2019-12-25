@@ -181,11 +181,30 @@ public class ArticleServiceImpl implements ArticleService {
 		return 0;
 	}
 
-	//显示全部文章   不管审核未审核
+	//
 	@Override
 	public PageInfo<Complain> getComplains(int articleId, int page) {
 		PageHelper.startPage(page, CmsContant.PAGE_SIZE);
 		return new PageInfo<Complain>(articleMapper.getComplains(articleId));
 	}
+
+	//单个文章的投诉详情
+	@Override
+	public PageInfo<Complain> getWZComplains(int articleId, int page) {
+		PageHelper.startPage(page, 4);
+		return new PageInfo<Complain>(articleMapper.getWZComplains(articleId));
+	}
+	
+	@Override
+	public List<Complain> getXq(int articleId) {
+		return articleMapper.getXq(articleId);
+	}
+	
+	
+	@Override
+	public void cx(int c1, int c2) {
+		articleMapper.cx(c1,c2);
+	}
 	
 }
+

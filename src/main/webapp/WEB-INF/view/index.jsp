@@ -195,17 +195,16 @@
 					     </ol>
 					  </div>
 				</div>	
-				
 					
 			  <div class="card" style="margin-top:50px">
 					  <div class="card-header">
-					    公告
+					    投诉最多的文章
 					  </div>
 					  <div class="card-body">
 					     <ul>
-					     	<li>1</li>
-					     	<li>2</li>
-					     	<li>3</li>
+					     		<c:forEach items="${lastArticles}" var="article" varStatus="index">
+					     		<li class="ex"> ${index.index+1}. <a href="/article/detail?id=${article.id}" target="_blank" >${article.title}</a></li>
+					     	</c:forEach>
 					     </ul>
 					  </div>
 				</div>			

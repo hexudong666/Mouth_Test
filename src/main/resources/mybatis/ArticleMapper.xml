@@ -95,4 +95,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<association column="user_id" property="user"  javaType="com.hexudong.entity.User" select="com.hexudong.mapper.UserMapper.findUserById"/>
 	</resultMap>
 	
+	<select id="getWZComplains" resultMap="ComplainMapper">
+		select * from cms_complains where article_id = #{value} ORDER BY created desc
+	</select>
+	
+	<select id="getXq" resultMap="ComplainMapper">
+		select * from cms_complains where article_id = #{value}  ORDER BY created desc
+	</select>
+	
+	<select id="cx" resultMap="ComplainMapper">
+		select * from cms_complains 
+	</select>
+	
 </mapper>

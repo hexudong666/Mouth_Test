@@ -155,11 +155,8 @@ public interface ArticleMapper {
 	@ResultType(Category.class)
 	List<Category> getCategoriesByChannelId(int channleId);
 
-
-	@Insert("INSERT INTO cms_complain(article_id,user_id,complain_type,"
-			+ "compain_option,src_url,picture,content,email,mobile,created)"
-			+ "   VALUES(#{articleId},#{userId},"
-			+ "#{complainType},#{compainOption},#{srcUrl},#{picture},#{content},#{email},#{mobile},now())")
+	//添加投诉
+	@Insert("insert into cms_complains (article_id,user_id,complaintype,urlip,created) values (#{articleId},#{userId},#{compainOption},#{srcUrl},now())")
 	int addCoplain(Complain complain);
 
 
@@ -169,6 +166,17 @@ public interface ArticleMapper {
 
 
 	List<Complain> getComplains(int articleId);
+
+
+	
+	//根据文章id查询每个文章 的投诉
+	List<Complain> getWZComplains(int articleId);
+
+
+	List<Complain> getXq(int articleId);
+
+
+	void cx(int c1, Object $missing$);
 
 
 	

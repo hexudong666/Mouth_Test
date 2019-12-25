@@ -24,13 +24,13 @@
 		  </div>
 		<input type="hidden" name="articleId" value="${article.id}">
 		
-		<div class="form-group">
-		   <label >地址</label>
+		 <div class="form-group">
+		   <label >证据地址</label>
 		    <form:input path="srcUrl" />
 		    <form:errors path="srcUrl" cssStyle="color:red"></form:errors>
 		 </div>
 		 
-		 <div class="form-group">
+		 <%-- <div class="form-group">
 		   <label >投诉类型</label>
 		    <form:select path="complainType" >
 		    	<option value="0">请选择</option>
@@ -40,7 +40,7 @@
 		    	<option value="4">涉黄 </option>
 		    </form:select>
 		     <form:errors path="complainType" cssStyle="color:red"></form:errors>
-		 </div>
+		 </div> --%>
 		  <div class="form-group">
 		   <label >投诉类型</label>
 		   		&nbsp;&nbsp;&nbsp;<input type="checkbox" name="compainOption" value="1"> 标题夸张
@@ -49,27 +49,27 @@
 		 	 <form:errors path="compainOption" cssStyle="color:red"></form:errors>
 		  </div>
 		  
-		  <div class="form-group">
+		  <!-- <div class="form-group">
 		   <label >图片</label>
 		   	<input type="file" name="file">
-		  </div>
-		  <div class="form-group">
+		  </div> -->
+		  <%-- <div class="form-group">
 		   <label >内容</label>
 		   	<form:textarea path="content" cols="100" rows="3" />
 		   	 <form:errors path="content" cssStyle="color:red"></form:errors>
-		  </div>
+		  </div> --%>
 		  
-		  <div class="form-group">
-		   <label >邮箱</label>
+		 <%--  <div class="form-group">
+		   <label >您的邮箱</label>
 		   <form:input path="email"/>
 		   	 <form:errors path="email" cssStyle="color:red"></form:errors>
-		  </div>
+		  </div>  --%>
 		  
-		   <div class="form-group">
-		   <label >电话</label>
+		  <%--  <div class="form-group">
+		   <label >联系电话</label>
 		   <form:input path="mobile"/>
 		   	 <form:errors path="mobile" cssStyle="color:red"></form:errors>
-		 </div>		  
+		 </div> --%>		  
 		<button>提交</button>
 	</form:form>	
 	
